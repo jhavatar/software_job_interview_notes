@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<project name="buildconfig">
+    
+    <!--  choose from: paid, free_play, free_amazon -->
+    <property name="build" value="free_play"/>
+    
+    <property name="target.buildvals.file" value="res\\values\\buildvals.xml"/>
+    
+    <property name="libs.ads.dir" value="libs_ads"/>
+   
+</project>

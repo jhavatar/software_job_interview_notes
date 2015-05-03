@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Data Structures</title>
+	<meta name="description" content="data structures">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Data Structures</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Data Structures</h1>
+	<ul>
+		<li>a particular way of storing and organizing data in a computer so that it can be used efficiently.</li>
+	</ul>
+</div>
+
+<div id="content">
+	<h2>Array</h2>
+	<ul>
+		<li>Consists of a collection of elements, each identified by at least one array index/key.</li>
+		<li>Position of each element can be computed from its index</li>
+		<li>Static arrays : fixed size when created</li>
+		<li>Dynamic arrays : allows elements to be added or removed</li>
+	</ul>
+	<h3>Efficiency</h3>
+	<ul>
+		<li>Indexing: &#920;<math>(1)</math></li>
+		<li>Insert/Delete at beginning:&#920;<math>(n)</math>, only valid for dynamic arrays </li>
+		<li>Insert/Delete at end: &#920;<math>(1)</math>, only valid for dynamic arrays </li>
+		<li>Insert/Delete at middle: &#920;<math>(m)</math>, only valid for dynamic arrays </li>
+		<li>Wasted space (average): 0 for non-dynamic, &#920;<math>(n)</math> for dynamic arrays</li>
+	</ul>
+	
+	
+	<h2>Linked list</h2>
+	<ul>
+		<li>Consists of a group of nodes which together represent a sequence.</li>
+		<li>Each node is composed of a data and a reference (in other words, a link) to the next node in the sequence; more complex variants add additional links.</li>
+	</ul>
+	<h3>Efficiency</h3>
+	<ul>
+		<li>Indexing: &#920;<math>(n)</math></li>
+		<li>Insert/Delete at beginning:&#920;<math>(1)</math></li>
+		<li>Insert/Delete at end: end known then &#920;<math>(1)</math>, else &#920;<math>(n)</math></li>
+		<li>Insert/Delete at middle:search time +  &#920;<math>(1)</math> </li>
+		<li>Wasted space (average):&#920;<math>(n)</math></li>
+	</ul>
+	
+	
+	<h2>Hash Table</h2>
+	<ul>
+		<li>structure that maps keys to values.</li>
+		<li>uses a hash function to compute an index into an array of buckets or slots, from which the correct value can be found.</li>
+		<li>hash collisions: different keys are assigned by the hash function to the same bucket</li>
+		<li>collision resolution: strategy to handle hash collisions</li>
+		<li>dynamic resizing: To keep the load factor under a certain limit, the table is dynamically expanded after a certain number of items are inserted. Resizing is accompanied by a full or incremental table rehash whereby existing items are mapped to new bucket locations.</li>
+	</ul>
+	<h3>Collision resolution</h3>
+	<h4>Separate chaining</h4>
+	<p>bucket is independent, and has some sort of list of entries with the same index. The time for hash table operations is the time to find the bucket (which is constant) plus the time for the list operation.</p>
+	<h4>Open addressing</h4>
+	<ul>
+		<li>The name "open addressing" refers to the fact that the location ("address") of the item is not determined by its hash value.</li>
+		<li>All entry records are stored in the bucket array itself</li>
+		<li>When a new entry has to be inserted, the buckets are examined, starting with the hashed-to slot and proceeding in some <em>probe</em> sequence, until an unoccupied slot is found.</li>
+		<li>Well-known probe sequences include:</li>
+		<ul>
+			<li>Linear probing, in which the interval between probes is fixed (usually 1)</li>
+			<li>Quadratic probing, in which the interval between probes is increased by adding the successive outputs of a quadratic polynomial to the starting value given by the original hash computation</li>
+			<li>Double hashing, in which the interval between probes is computed by another hash function</li>
+		</ul>
+	</ul>
+	<h3>Efficiency</h3>
+	<h4>Simplest model</h4>
+	<ul>
+		<li>table does not resize</li>
+		<li>a table of size k</li>
+		<li>open adressing</li>
+		<li>hash function causes no collisions on insertion:</li>
+		<ul>
+			<li><strong>collisions:</strong> max<math>(0, n-k)</math></li>
+			<li><strong>comparisons for a lookup:</strong>  &#927;<math>(1 + n/k)</math> </li>
+		</ul>
+		<li>hash function causes a collisions on each insertion:</li>
+		<ul>
+			<li><strong>collisions:</strong> <math>n</math></li>
+			<li><strong>comparisons for a lookup:</strong>  &#937;<math>(n)</math> </li>
+		</ul>
+		
+	</ul>
+	
+	<h4>Simplest model with resizing</h4>
+	<ul>
+		<li>resizing by a factor of b implies that only <math>n/b^i</math> keys are inserted <math>i</math> or more times, so that the total number of insertions is bounded above by <math>bn/(b-1)</math>, which is &#937;<math>(n)</math>.</li>
+	</ul>
+	
+	<h4>More realistic model</h4>
+	<ul>	
+		<li>hash function is a random variable over a probability distribution of hash functions</li>
+		<li>performance is computed on average over the choice of hash function</li>
+		<li>"simple uniform hashing" -- hash function distribution is uniform</li>
+		<li><strong>comparisons for a lookup</strong>  when hashing with chaining:  &#920;<math>(1 + n/k)</math> on average</li>
+		<li><strong>comparisons for a lookup</strong>  when hashing with open addressing:  &#920;<math>(1/(1 - n/k)</math> on average</li>
+	</ul>
+	
+	
+	<h2>Tree</h2>
+	<ul>
+		<li>Simulates a hierarchical tree structure, with a root value and subtrees of children, represented as a set of linked nodes.</li>
+		<li>Each node in a tree has zero or more child nodes</li>
+	</ul>
+	<h3>Terminology</h3>
+	<ul>
+		<li><strong>branching factor, degree</strong>: number of children a node has</li>
+		<li><strong>root node</strong>: topmost node in a tree</li> 
+		<li><strong>child node</strong>: the node directly below a node</li>
+		<li><strong>parent node</strong>:  A node that has a child is called the child's parent node</li>
+		<li><strong>internal node, inner node, inode, branch node</strong>: node that has child nodes</li>
+		<li><strong>external node, outer node, leaf node, or terminal node</strong>: node that does not have child nodes</li>
+		<li><strong>depth of a node</strong>: length of the path to its root. root node has depth zero</li>
+		<li><strong>height of a node</strong>: length of the longest downward path to a leaf from that node. The height of the root is the height of the tree.</li>
+		<li><strong>subtree</strong>: A subtree of a tree T is a tree consisting of a node in T and all of its descendants in T.</li>
+		<li><Strong>level of the tree:</Strong> all nodes that are a given distance from the root in terms of number of edges</li>
+	</ul>
+	
+	<h2>Binary Tree</h2>
+	<ul>
+		<li>Tree data structure in which each node has at most two child nodes, usually distinguished as "left" and "right".</li>
+	</ul>
+	<h3>Terminology</h3>
+	<ul>
+		<li><strong>full binary tree, proper binary tree or 2-tree or strictly binary tree</strong>:  every node other than the leaves has two children</li>
+		<li><strong>perfect binary tree</strong>: full binary tree in which all leaves are at the same depth or same level, and in which every parent has two children.</li>
+		<li><strong>complete binary tree:</strong>  every level, except possibly the last, is completely filled, and all nodes are as far left as possible.</li>
+		<li><strong>balanced binary tree</strong>:  the depth of the left and right subtrees of every node differ by 1 or less. The depth and height of a binary tree is equal to <math>logn</math>, where <math>n</math> is the number of nodes</li>
+		<li><strong>degenerate tree</strong>: each parent node has only one associated child node. behaves like a linked-list</li>
+	</ul>
+	<h3>Properties</h3>
+	<ul>
+		<li>The number n of nodes in a perfect binary tree can be found using this formula: <math>n = 2^(h+1)-1</math> where <math>h</math> is the depth of the tree.</li>
+		<li>The number n of nodes in a binary tree of height h is at least n = h + 1 and at most <math>n = 2^(h+1)-1</math> where <math>h is the depth of the tree.</li>
+		<li>The number L of leaf nodes in a perfect binary tree can be found using this formula: <math>L = 2^h</math> where<math> h is the depth of the tree.</li>
+		<li>The number n of nodes in a perfect binary tree can also be found using this formula: <math>n = 2L-1</math> where <math>L</math> is the number of leaf nodes in the tree.</li>
+		<li>The number of null links (absent children of nodes) in a complete binary tree of n nodes is <math>(n+1)</math>.</li>
+		<li>The number n-L of internal nodes (non-leaf nodes) in a Complete Binary Tree of n nodes is floor<math>(n/2)</math>.</li>
+		<li>For any non-empty binary tree with <math>n_0</math> leaf nodes and <math>n_2</math> nodes of degree 2, <math>n_0 = n_2 + 1.</math></li>
+	</ul>
+	<h3>Traversal</h3>
+	<p>orders in which the nodes can be visited:</p>
+	<ul>
+		<li>Pre-Order: Root, Left child, Right child</li>
+		<li>In-Order: Left child, Root, Right child.</li>
+		<li>Post-Order: Left Child, Right child, Root</li>
+	</ul>
+	
+	
+	<h2>Binary Search Tree</h2>
+	<ul>
+		<li>also known as BST, ordered or sorted binary tree</li>
+		<li>properties:</li>
+		<ul>
+			<li>The left subtree of a node contains only nodes with keys less than the node's key.</li>
+			<li>The right subtree of a node contains only nodes with keys greater than the node's key</li>
+			<li>The left and right subtree must each also be a binary search tree.</li>
+			<li>There must be no duplicate nodes.</li>			
+		</ul>
+		<li><strong>Binary-search-tree property: </strong> Let x be a node in a binary search tree. If y is a node in the left subtree of x, then y.key < x.key. If y is a node in the right subtree of x, then y.key > x.key.</li>
+	</ul>
+	<h3>Efficiency</h3>
+	<ul>
+		<li>Indexing: best case when balanced is &#927;<math>(logn)</math>, else worse case is &#927;<math>(n)</math> </li>
+		<li>Insert/Delete at beginning:best case when balanced is &#927;<math>(logn)</math>, else worse case is &#927;<math>(n)</math></li>
+		<li>Insert/Delete at end: best case when balanced is &#927;<math>(logn)</math>, else worse case is &#927;<math>(n)</math></li>
+		<li>Insert/Delete at middle: best case when balanced is &#927;<math>(logn)</math>, else worse case is &#927;<math>(n)</math></li>
+		<li>Wasted space (average):&#920;<math>(n)</math></li>
+	</ul>
+	
+	
+	<h2>Heap</h2>
+	<ul>
+		<li>Specialized tree-based data structure that satisfies the heap property</li>
+		<li><strong>heap property:</strong> If A is a parent node of B then key(A) is ordered with respect to key(B) with the same ordering applying across the heap</li>
+		<li>Not the same as a search tree, guarantees orders for levels while search tree guarantees order for left to right nodes.</li>
+		<li>Not be confused with the heap which is a common name for the pool of memory from which dynamically allocated memory is allocated.</li>
+		<li>The heap is one maximally efficient implementation of an abstract data type called a priority queue,</li>
+	</ul>
+	
+	<h2>Binary Heap</h2>
+	<ul>
+		<li>Heap data structure created using a binary tree.</li>
+		<li>Binary tree with two additional constraints:</li>
+		<ul>
+			<li>is a complete binary tree</li>
+			<li>Heap property</li>
+		</ul>
+	</ul>
+	<h3>Efficiency</h3>
+	<ul>
+		<li>Search: <math>(logn)</math></li>
+		<li>Insert: &#927;<math>(logn)</math></li>
+		<li>Delete:  &#927;<math>(logn)</math></li>
+		<li>Space (average):&#920;<math>(n)</math></li>
+	</ul>
+	
+	<h2><math>(a,b)</math> Tree</h2>
+	<ul>
+		<li>where <math>a</math> and <math>b</math> are integers and <math>2 <= a <= (b+1)/2 </math>, is multi-way search tree</li>
+		<li>perfect tree -- all external nodes at same depth</li>
+		<li>each internal node (except root) has at least <math>a</math> children and at most <math>b</math> children</li>
+		<li>each internal node stores between <math>(a-1)</math> and <math>(b-1)</math> keys</li>
+		<li>height of <math>(a, b)</math> tree storing <math>n</math> items is <math>&#937;(logn/logb)</math> and <math>&#927;(logn/loga)</math></li>
+	</ul>
+	<h3>Operations</h3>
+	<ul>
+		<li>When data are inserted or removed from a node, its number of child nodes changes through joining or splitting. In order to maintain the pre-defined range</li>
+		<li>If an internal node has 2d keys, then adding a key to that node can be accomplished by splitting the 2d key node into two d key nodes and adding the key to the parent node. Each split node then has the required minimum number of keys</li>
+		<li>If an internal node and its neighbour each have d keys, then a key may be deleted from the internal node by combining with its neighbor. Deleting the key would make the internal node have d-1 keys; joining the neighbor would add d keys plus one more key brought down from the neighbor's parent. The result is an entirely full node of 2d keys.</li>
+	</ul>
+	<h3>Efficiency</h3>
+	<ul>
+		<li>where <math>f(b)</math> is time required to search the secondary data structure and <math>g(b)</math> is the time for split or fusion.</li>
+		<li>Search: <math> &#927;(f(b)/loga*logn)</math> </li>
+		<li>Insert: <math> &#927;(g(b)/loga*logn)</math></li>
+		<li>Delete: <math> &#927;(g(b)/loga*logn)</math></li>
+		<li>Space: <math> &#927;(n)</math></li>
+	</ul>
+	
+	<h2>B-tree</h2>
+	<ul>
+		<li>special case of <math>(a,b)</math> tree which is best known for maintaining a dictionary in external memory</li>
+		<li>B-tree of order <math>d</math> is <math>(a,b)</math> tree where <math>a = ceiling(d/2)</math> and <math>b = d</math>.</li>
+		<li>important property is that can choose <math>d</math> so that max <math>d</math> children references and <math>d-1</math> keys stored at a node can all fit into a single disk block. i.e. <math>d</math> is <math> &#920;(B)</math>  </li>
+	</ul>
+	
+</div>
+
+
+</body>
+</html>

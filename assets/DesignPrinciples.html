@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>OO Principles</title>
+	<meta name="description" content="oo principles">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Design Principles</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Object-oriented Design Principles</h1>
+</div>
+
+<div id="content">
+	<!-- ul>
+		<li><a href="#abstract">Abstraction principle -- Encapsulate what varies</a></li>
+		<li><a href="#interface">Program to interface, not implementation</li>
+		<li><a href="#composition">Composite Reuse Principle -- Favour composition over inheritance</a></li>
+		<li><a href="#looselycoupled">Strive for loosely coupled designs between objects that interact</a></li>
+		<li><a href="#openclosed">Open/Closed Principle -- Classes should be open for extension but closed for modification</a></li>
+		<li><a href="#depinvert">Dependency inversion principle -- Depend on abstractions. Do not depend on concrete classes</a></li>
+		<li><a href="#leastknowledge">Principle of least knowledge -- only talk to your friends</a></li>
+		<li><a href="#hollywood">Hollywood Principle -- Don't call us, we'll call you</a></li>
+		<li><a href="#singleresp">Single responsibility principle -- A class should have only one reason to change</a></li>
+	</ul-->
+	
+	<a name="abstract"/>
+	<h2>Abstraction principle</h2>
+	<p>Encapsulate what varies</p>
+	<ul>
+		<li>Identify the aspects of your application that vary and separate them from what stays the same.</li>
+		<li>result is fewer unintended consequences from code changes and more flexibility in your system</li>
+	</ul>
+	
+	
+	<a name="interface"/>
+	<h2>Program to interface, not implementation</h2>
+	<ul>
+		<li>Exploit polymorphism by programming to a a supertype so that the actual runtime object isn't locked into code.</li>
+		<li>Note, the concept of an interface, i.e. supertype -- not necessarily a Java interface.</li>
+	</ul>
+	
+	<a name="composition"/>
+	<h2>Composite Reuse Principle</h2>
+	<p>Favour composition over inheritance</p>
+	<ul>
+		<li>HAS-A relationship over IS-A</li>
+		<li>Creating a system using composition gives you flexibility, e.g. change behaviour at runtime</li>
+	</ul>
+	
+	<a name="looselycoupled"/>
+	<h2>Strive for loosely coupled designs between objects that interact</h2>
+	<ul>
+		<li>When 2 objects are loosely coupled they can interact but have very little knowledge of each other</li>
+		<li>Allows building flexible OO systems that can handle change because they minimize the interdependency.</li>
+	</ul>
+	
+	<a name="openclosed"/>
+	<h2>Open/Closed Principle</h2>
+	<p>Classes should be open for extension but closed for modification</p>
+	<ul>
+		<li>should be that an entity (classes, modules, functions, etc.) can allow its behaviour to be modified without altering its source code</li>
+		<li>The closed parts should be isolated from new extensions</li>
+	</ul>
+	
+	<a name="depinvert"/>
+	<h2>Dependency inversion principle</h2>
+	<p>Depend on abstractions. Do not depend on concrete classes</p>
+	<ul>
+		<li>Reduce dependencies</li>
+		<li>High-level components should not depend on our low-level components. Both should depend on abstractions.</li>
+		<li>Guidelines:</li>
+		<ul>
+			<li>No variable should hold reference to a concrete class. Can use factory to get around "new".</li>
+			<li>No class should derive from a concrete class -- if derive from concrete class then depend on concrete class.</li>
+			<li>No method should override an implemented method of any of its base classes -- if override then base class not abstract. Implemented methods should be shared by all subclasses.</li>
+		</ul>
+	</ul>
+	
+	<a name="leastknowledge"/>
+	<h2>Principle of least knowledge</h2>
+	<p>only talk to your friends</p>
+	<ul>
+		<li>Reduce interactions between objects to just a few close friends.</li>
+		<li>Only invoke methods that belong to:</li>
+		<ul>
+			<li>Object itself</li>
+			<li>Objects passed in as parameters to a method</li>
+			<li>Any object method created or instantiates</li>
+			<li>Any components of the object</li>
+		</ul>
+	</ul>
+	
+	<a name="hollywood"/>
+	<h2>Hollywood Principle</h2>
+	<p>Don't call us, we'll call you</p>
+	<ul>
+		<li>Prevents dependency rot.</li>
+		<li>Allow low-level components to hook themselves into system, but high-level components determine when they are needed and how.</li>
+	</ul>
+	
+	<a name="singleresp"/>
+	<h2>Single responsibility principle</h2>
+	<p>A class should have only one reason to change</p>
+	<ul>
+		<li>Every class should have a single responsibility, and that responsibility should be entirely encapsulated by the class</li>
+		<li>All its services should be narrowly aligned with that responsibility.</li>
+	</ul>
+</div>
+
+</body>
+</html>

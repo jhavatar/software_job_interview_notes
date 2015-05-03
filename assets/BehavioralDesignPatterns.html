@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Behavioral Design Patterns</title>
+	<meta name="description" content="behavioral design patterns">
+	<meta name="author" content="jhavatar">
+  
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+  <!-- 
+  template:
+	<h3>TITLE</h3>
+	<h4>Intent</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+   -->
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Behavioral Design Patterns</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Behavioral Design Patterns</h2>
+	<p>Design patterns that realize common communication patterns between objects</p>
+</div>
+
+<div id="content">
+	<h2>Chain of Responsibility</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Avoid coupling the sender of a request to its receiver by giving more than one object a chance to handle the request.</li> 
+		<li>A single interface between sender and multiple handlers</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>handler elements encapsulated inside a chain/pipeline object</li>
+		<li>clients “launch and leave” their requests at the entrance to the pipeline.</li>
+		<li>request messages gets passed from object to object until it reaches an object capable of handling it</li>
+		<li>Instead of senders and receivers maintaining references to all candidate receivers, each sender keeps a single reference to the head of the chain, and each receiver keeps a single reference to its immediate successor in the chain.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>Make sure there exists a “safety net” to “catch” any requests which go unhandled.</li>
+		<li>Do not use Chain of Responsibility when each request is only handled by one handler, or, when the client object knows which service object should handle the request.</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>ATM machine money giving mechanism</li>
+	</ul>
+	
+	
+	<h2>Command</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Issue requests to objects without knowing anything about the operation being requested or the receiver of the request</li>
+		<li>decouples the object that invokes the operation from the one that knows how to perform it.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Encapsulate a request as an object</li>
+		<li>parameterize clients with different requests</li>
+		<li>All clients of Command objects treat each object as a “black box” by simply invoking the object’s virtual execute() method whenever the client requires the object’s “service”.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>The “check” at a diner -- The waiter(ess) takes an order or command from a customer and encapsulates that order by writing it on the check. The order is then queued for a short order cook. </li>
+	</ul>
+</body>
+
+
+
+	<h2>Interpreter Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>A class of problem occurs repeatedly in a well-defined and well-understood domain.</li>
+		<li>If the domain were characterized with a “language”, then problems could be easily solved with an interpretation “engine”.</li>
+		<li>Map a domain to a language, the language to a grammar, and the grammar to a hierarchical object-oriented design.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Given a language, define a representation for its grammar</li>
+		<li>Define an interpreter that uses the representation to interpret sentences in the language.</li>
+		<li>a class is used to represent each grammar rule. And since grammars are usually hierarchical in structure, an inheritance hierarchy of rule classes maps nicely.</li>
+		<li>An abstract base class specifies the method interpret(). Each concrete subclass implements interpret() by accepting (as an argument) the current state of the language stream, and adding its contribution to the problem solving process.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>The pattern doesn’t address parsing. When the grammar is very complex, other techniques (such as a parser) are more appropriate.</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Musicians playing the music from the score are able to reproduce the original pitch and duration of each sound represented. </li>
+	</ul>
+	
+	
+
+	<h2>Iterator Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Provides a way to access the elements of an aggregate object sequentially without exposing its underlying representation.</li>
+		<li>Polymorphic traversal -- absracts the traversal so that decoupled algotrithm can interface with wildly different data</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components:</li>
+		<ul>
+			<li>aggregate object or container -- object whose instances are collections of other objects </li>
+			<li>iterator -- object that enables traversal of container</li>
+		</ul>
+		
+		<li>takes the responsibility for access and traversal out of the container and put it into an Iterator object -- reduce bloat, configuration, code</li>
+		<li>defines standard traversal protocol</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>next channel button on TV gives next tuned channel, channel number is not important but programming is</li>
+	</ul>
+	
+	
+
+	<h2>Mediator</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Object that encapsulates how a set of objects interact</li>
+		<li>promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interaction independently</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>As more classes are developed in a program, especially during maintenance and/or refactoring, the problem of communication and dependencies between these classes may become more complex</li>
+		<li>Now communication between objects is encapsulated with a mediator object</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Control tower at an airport -- pilots of the planes approaching or departing the terminal area communicate with the tower rather than explicitly communicating with one another</li>
+	</ul>
+	
+	
+
+	<h2>Memento</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Without violating encapsulation, capture and externalize an object’s internal state so that the object can be returned to this state later.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components/Roles:</li>
+		<ul>
+			<li>Originator -- the object that knows how to save and restore itself.</li>
+			<li>Caretaker -- the object that knows why and when the Originator needs to save and restore itself.</li>
+			<li>Memento -- the lock box that is written and read by the Originator, and shepherded by the Caretaker. Caretaker cannot, or should not, be able to change it</li>
+		</ul>
+		<il>Implementation flow:</il>
+		<ul>
+			<li>client as Caretaker requests a Memento object from the source object when it needs to checkpoint the source object’s state</li>
+			<li>The source object as Originator initializes the Memento with a characterization of its state.</li>
+			<li>If the client (as Caretaker) subsequently needs to “rollback” the source object’s state, it hands the Memento back to the source object (as Originator) for reinstatement.</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>pseudorandom number generator -- will always produce the same sequence thereafter when initialized with the seed state</li>
+	</ul>
+	
+	
+
+	<h2>Null Object Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Given that an object reference may be optionally null, and that the result of a null check is to do nothing or use some default value, how can the absence of an object — the presence of a null reference — be treated transparently?</li>
+		<li>Encapsulate the absence of an object by providing a substitutable alternative that offers suitable default do nothing behavior.</li>
+		<li>abstract the handling of null away from the client</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Instead of using a null reference to convey absence of an object (for instance, a non-existent customer), one uses an object which implements the expected interface, but whose method body is empty.</li>
+		<li>The key to the Null Object pattern is an abstract class that defines the interface for all objects of this type.</li>
+		<li>The Null Object is implemented as a subclass of this abstract class.</li>
+		<li>Because it conforms to the abstract class’ interface, it can be used any place this type of object is needed. As compared to using a special “null” value which doesn’t actually implement the abstract interface and which must constantly be checked for with special code in any object which uses the abstract interface.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>A function that retrieves a list of files in a folder and performs some action on each. In the case of an empty folder, one response may be to throw an exception or return a null reference rather than a list. Thus, the code which expects a list must verify that it in fact has one before continuing, which can complicate the design.By returning a null object (i.e. an empty list) instead, there is no need to verify that the return value is in fact a list.</li>
+	</ul>
+	
+	
+
+	<h2>Observer Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Solve the common problem of notifying several objects  about changes in the state of one principle object</li>
+		<li>Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<il>Components/Roles:</il>
+		<ul>
+			<li>Subject --  “keeper” of the data model. </li>
+			<li>Obeserver -- data model's functionality delegated to decoupled and distinct Observer objects.</li>
+		</ul>
+		<li>Observers register themselves with the Subject as they are created.</li>
+		<li>Whenever the Subject changes, it broadcasts to all registered Observers that it has changed</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Implementing the Publisher/Subscriber scenario. Mechanism to notify subscriber objects whenever the publisher object changes state.</li>
+		<li>The “View” part of Model-View-Controller.</li> 
+	</ul>
+	
+	
+
+	<h2>State Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Allow an object to alter its behavior when its internal state changes. </li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components/Roles:</li>
+		<ul>
+			<li>Context class -- present a single interface to the outside world.</li>
+			<li>State abstract base class</li>
+			<li>Different concrete states -- derived from abstract base class</li>
+		</ul>
+		<li>Define state specific behaviour in concrete State classes</li>
+		<li>Maintain reference to current state in Context class</li>
+		<li>Change Context's state and therefore behaviour by changing state reference</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>State pattern does not specify where the state transitions will be defined. The choices are two: the “context” object, or each individual State derived class. The advantage of the latter option is ease of adding new State derived classes. The disadvantage is each State derived class has knowledge of (coupling to) its siblings, which introduces dependencies between subclasses.</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Vending machines have states based on the inventory, amount of currency deposited, the ability to make change, the item selected, etc. hen currency is deposited and a selection is made, a vending machine will either deliver a product and no change, deliver a product and change, deliver no product due to insufficient currency on deposit, or deliver no product due to inventory depletion. </li>
+	</ul>
+	
+	
+
+	<h2>Strategy Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Interchangeably use a set of algorithms</li>
+		<li>Define a family of algorithms, encapsulate each one, and make them interchangeable.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Instead of multiple classes extending a base class for each behaviour (duplicate code) -- encapsulate behaviour with an interface so that it is interchangeable</li>
+		<li>Better decoupling between the behavior and the class that uses the behavior.</li>
+		<li>behaviour can change without significant code changes and at real time</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Mode of transportation to an airport has several options: car, taxi, shuttle, bus. The traveler must chose the Strategy based on tradeoffs between cost, convenience, and time.</li>
+		<li>Car object’s brake behaviour can be changed from BrakeWithABS() to Brake()</li>
+	</ul>
+	
+	
+
+	<h2>Template Method Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Base class declares algorithm "placeholders", and derived classes implement the placeholders.</li>
+		<li>Subclasses redefine certain steps of an algorithm without changing the algorithm’s structure.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>The component designer decides which steps of an algorithm are invariant (standard), and which are variant (customizable)</li>
+		<li>The invariant steps are implemented in an abstract base class</li>
+		<li>The variant steps represent “hooks”, or “placeholders”, that are implemented with method overriding in concrete derived class.</li>
+		<li>example of Hollywood principle</li>
+		<li>Reasons to use:</li>
+		<ul>
+			<li>Avoid duplication in the code</li>
+			<li>Control at what point(s) subclassing is allowed.</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Within a floor plan, the foundation, framing, plumbing, and wiring will be identical for each house. Variation is introduced in the later stages of construction to produce a wider variety of models. </li>
+	</ul>
+	
+	
+
+	<h2>Visitor Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Abstract functionality that can be applied to an aggregate hierarchy of “element” objects. </li>
+		<li>Add capabilities to a composite of objects and encapsulation is not important.</li>
+		<li>Define a new operation without changing the classes of the elements on which it operates.</li>		
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components/Roles:</li>
+		<ul>
+			<li>Element objects -- objects to wich we want to add functionality</li>
+			<li>Composite object -- consists of a hierarchy of elements</li>
+			<li>Visitor -- object that adds functionality to elements based on element type</li>
+			<li>Traverser object -- guides Visitor to visit each Element in Composite.</li> 
+		</ul>
+		<li>Encourages designing lightweight Element classes - because processing functionality is removed from their list of responsibilities.</li>
+		<li>New functionality can easily be added to the original inheritance hierarchy by creating a new Visitor subclass.</li>
+		<li>Pros</li>
+		<ul>
+			<li>Add capabilities to composite structure without changing the structure itself</li>
+			<li>Add new operations is relatively easy</li>
+			<li>Code for operations performed by Visitor is centralized</li>
+		</ul>
+		<li>Cons</li>
+		<ul>
+			<li>The composite classes' encapsulation is broken when visitor is used</li>
+			<li>Because traversal function is envolved, changes to the composite structure are more difficult</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>requires a programming language that supports single dispatch and method overloading</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>instead of implementing "print()" method for each element in composite object (different classes require slightly different actions to print properly), a single class traversing the elements implements the printing based on method overloading. </li>
+	</ul>
+</div>	
+
+</html>

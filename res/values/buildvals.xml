@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Software Job Interview Notes</string>
+    <string name="launcher_name">S.J.I.N.</string>
+    <item type="bool" name="showAds">false</item>
+    <item type="bool" name="buyPro">true</item>
+    
+    <!-- 
+    0 : ADMOB
+    1 : AMAZON
+    -->
+    <integer-array
+        name="ad_company_order">
+        <item>0</item>
+    </integer-array>
+</resources>

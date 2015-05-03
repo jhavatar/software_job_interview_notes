@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Structural Design Patterns</title>
+	<meta name="description" content="structural design patterns">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+  
+  <!-- 
+  template:
+	<h3>TITLE</h3>
+	<h4>Intent</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+   -->
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Structural Design Patterns</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Structural Design Patterns</h1>
+	<p>Design patterns that identifying a simple way to realize relationships between entities</p>
+</div>
+	
+<div id="content">
+
+	<h2>Adapter</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Make two incompatible interfaces to work together.</li>
+		<li>Convert the interface of a class into another interface clients expect</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>components:</li>
+		<ul>
+			<li>Adaptee class: legacy class</li>
+			<li>Target Interface class: interface expected by client</li>
+			<li>Adapter object: make adaptee available via target interface</li>
+		</ul>
+		<li>Does not modify adaptee class</li>
+		<li>2 Types:</li>
+		<ul>
+			<li>Object adapter, aka Wrapper:</li>
+			<ul>
+				<li>Makes use of composition</li>
+				<li>Adapter object implements interface class and contains adaptee object</li>
+			</ul>
+			<li>Class adapter:</li>
+			<ul>
+				<li>makes use of inheritance</li>
+				<li>extends both target interface class and legacy adaptee class </li>
+				<li>requires multiple inheritance</li>
+			</ul>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>Class adapter's multiple inheritance makes it unusable on so,e languages, e.g. Java</li>
+		<li>Pattern gets retrofitted, makes things work after they’re designed</li>
+	</ul>
+	
+	
+	<h2>Bridge</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Decouple an abstraction from its implementation so that the two can vary independently</li>
+		<li>run-time binding of the implementation</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>components:</li>
+		<ul>
+			<li>Handle: interface object known and used by client</li>
+			<li>Body: implementation object that is encapsulated by handle</li>
+		</ul>
+		<li>Each component has its own hierarchy and can be extended independently</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>makes things work before they’re designed</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>A switch that switches a device on and off -- switch can be chain or flip-switch, device can be light or TV</li>
+	</ul>
+	
+	
+	<h2>Composite Pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Clients treat individual objects and compositions of objects uniformly.</li>
+		<li>Compose objects into a tree structures to represent whole-part hierarchies. </li> 
+		<li>Support recursive composition -- composites that contain components, each of which could be a composite </li> 	
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>components:</li>
+		<ul>
+			<li>primitive object</li>
+			<li>composite object -- built from combining primitive or other composite objects</li>
+			<li>Component: abstract base class that specifies the behavior that needs to be exercised uniformly across all primitive and composite objects</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Arithmetic expression consisting of an operand, an operator (+ - * /) and another operand -- operand can be number or another arithmetic expresssion. e.g.  <math> 2 + 3 </math> and <math> (2 + 3) + (4 * 6) </math> </li>
+	</ul>
+	
+	
+	<h2>Decorator</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Attach additional responsibilities to an object dynamically -- e.g. add behavior and state to object at run-time</li>
+		<li>Flexible alternative to subclassing for extending functionality.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>components:</li>
+		<ul>
+			<li>single abstract class or interface</li>
+			<li>core object</li>
+			<li>decorator objects</li>
+		</ul>
+		<li>decorators implement same interface or abstract class as core object</li>
+		<li>decorator adds new methods or extends core's methods</li>
+		<li>using inheritance to achieve type matching, not to get behavior.
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>Can implement new decorator at any time to add new behaviour -- do not require change existing code</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Coffee shop Advertises and prices its products using abstract class Beverage. Create variations of base class coffee by adding delegates like Milk, Whip, Mocha, ...</li>
+	</ul>
+	
+	
+	<h2>Facade</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>unified interface to a set of interfaces in a subsystem</li>
+		<li>defines a higher-level interface that makes the subsystem easier to use</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>object that provides a simplified interface to a larger body of code (such as a class library)</li>
+		<li>facade features:</li>
+		<ul>
+			<li>code easier to use, understand and test -- convenient methods for common tasks</li>
+			<li>more readable</li>
+			<li>reduce dependencies of outside code on the inner workings</li>
+			<li>wrap a poorly designed collection of APIs with a single well-designed API</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>class library</li>
+		<li>Home theater system -- hides amplifier, dvd player, projector, screen, tuner</li>
+	</ul>
+	
+	
+	<h2>Flyweight</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>object that minimizes memory use by sharing as much data as possible with other similar objects</li>
+		<li>way to use objects in large numbers when a simple repeated representation would use an unacceptable amount of memory</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Each flyweight object is divided into two pieces:</li>
+		<ul>
+			<li>state-dependent (extrinsic) part stored (shared) in the Flyweight object</li>
+			<li>state-independent (intrinsic) part stored or computed by client objects, and passed to the Flyweight when its operations are invoked.</li>
+		</ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>graphical representation of characters in a word processor -- a glyph object for each character would amount to hundreds or thousands of bytes, Instead, for every character a reference to a flyweight glyph object shared by every instance of the same character in the document; only the position of each character (in the document and/or the page) would need to be stored internally</li>
+	</ul>
+	
+	
+	<h2>Private Class Data</h2>
+	<p>AKA: PIMPL (Private IMPLementation) or Opaque pointer</p>
+	<h4>Intent</h4>
+	<ul>
+		<li>seeks to reduce exposure of attributes by limiting their visibility.</li>
+		<li>Control write access to class attributes</li>
+		<li>Separate data from methods that use it</li>
+		<li>Encapsulate class data initialization</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components:</li>
+		<ul>
+			<li>data class -- move all attributes that need hiding to the data class</li>
+			<li>main class -- encapsulate data class object.</li>
+		</ul>
+		<li>main class object initializes data class object in constructor.</li>
+		<li>main class object exposes attributes of data class through a getter.</li>
+		<li>expose attributes that will change through a setter.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	
+	
+	<h2>Proxy</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Provide a surrogate or placeholder for another object to control access to it.</li>
+		<li>Use an extra level of indirection to support distributed, controlled, or intelligent access.</li>
+		<li>Add a wrapper and delegation to protect the real component from undue complexity.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>proxy object instantiates the real object the first time the client makes a request of the proxy</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>situations where applicable</li>
+		<ul>
+			<li>placeholder for “expensive to create” objects</li>
+			<li>provides a local representative for an object that resides in a different address space</li>
+			<li>controls access to a sensitive master object</li>
+			<li>performs additional actions when an object is accessed.</li>
+		</ul>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>A check or bank draft is a proxy for funds in an account. A check can be used in place of cash for making purchases and ultimately controls access to cash in the issuer’s account.</li>
+	</ul>
+</div>
+	
+</body>
+</html>

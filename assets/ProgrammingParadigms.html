@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Programming Paradigms</title>
+	<meta name="description" content="programming paradigms">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Programming Paradigms</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Programming Paradigms</h1>
+	<p>fundamental style of computer programming</p>
+</div>
+
+<div id="content">
+	<h2>Imperative Programming</h2>
+	<ul>
+		<li>Computation as statements that directly change a program state</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>Direct assignments</li>
+			<li>common data structures</li>
+			<li>global variables</li>
+			<li>goto statements</li>
+		</ul>
+		<li>Examples: C, C++, Java, PHP, Python</li>
+	</ul>
+	
+	
+	<h2>Structured Programming</h2>
+	<ul>
+		<li>A style of imperative programming with more logical program structure</li>
+		<li>Aimed on improving the clarity, quality, and development time of a computer program</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>indentation</li>
+			<li>either no, or limited use of, goto statements</li>
+		</ul>
+		<li>Examples: C, C++, Java</li>
+	</ul>
+	
+	
+	<h2>Procedural Programming</h2>
+	<ul>
+		<li>Derived from structured programming</li>
+		<li>based on the concept of modular programming or the procedure call</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>Local variables</li>
+			<li>sequence</li>
+			<li>selection</li>
+			<li>iteration</li>
+			<li>modularization</li>
+		</ul>
+		<li>Examples: C, C++, Java, PHP, Python</li>
+	</ul>
+	
+	
+	<h2>Functional Programming</h2>
+	<ul>
+		<li>Treats computation as the evaluation of mathematical functions </li>
+		<li>avoiding state and mutable data</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>Lambda calculus</li>
+			<li>compositionality --  the meaning of a complex expression is determined by the meanings of its constituent expressions and the rules used to combine them</li>
+			<li>formula</li>
+			<li>recursion</li>
+			<li>referential transparency -- an expression can be replaced with its value without changing the behavior of a program</li>
+			<li>no side effects -- does not: in addition to returning a value, also modifies some state</li>
+			
+		</ul>
+		<li>Examples: Erlang, Haskell, Lisp, Clojure, Scala</li>
+	</ul>
+	
+	
+	<h2>Event-driven Programming</h2>
+	<ul>
+		<li>Program flow is determined mainly by events, such as mouse clicks or interrupts including timer</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>Main loop</li>
+			<li>event handlers</li>
+			<li> asynchronous processes</li>		
+		</ul>
+		<li>Examples: ActionScript</li>
+	</ul>
+	
+	<h2>Object-oriented Programming</h2>
+	<ul>
+		<li>Treats datafields as objects manipulated through pre-defined methods only</li>
+		<li><button id="subsection0" targetHtml="ObjectOientedProgramming.html" type="button" data-role="button" ><h4>Object Oriented Programming</h4></button> <br></li>
+		<li>Examples: C++, C#, Java, PHP, Python, Ruby, Scala</li>
+	</ul>
+	
+	
+	
+	<h2>Declarative Programming</h2>
+	<ul>
+		<li>Defines computation logic without defining its detailed control flow</li>
+		<li>attempt to minimize or eliminate side effects by describing what the program should accomplish in terms of the problem domain, rather than describing how to go about accomplishing it as a sequence of the programming language primitives</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>Fourth-generation programming language (4GLs)</li>
+			<li>spreadsheets</li>
+			<li>report program generators</li>		
+		</ul>
+		<li>Examples: SQL, regular expressions, CSS</li>
+	</ul>
+	
+	
+	<h2>Automata-based programming</h2>
+	<ul>
+		<li>Treats programs as a model of a finite state machine or any other formal automata</li>
+		<li>characterized by:</li>
+		<ul>
+			<li>State enumeration</li>
+			<li>control</li>
+			<li>state changes</li>	
+			<li>isomorphism</li>		
+			<li>state transition table</li>
+		</ul>
+	</ul>
+	
+</div>
+
+</body>
+</html>

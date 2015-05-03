@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Concurrency</title>
+	<meta name="description" content="Concurrency">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Concurrency</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Concurrency</h1>
+	<p>property of systems in which several computations are executing simultaneously, and potentially interacting with each other</p>
+</div>
+
+<div id="content">
+
+	<h2>Terminology</h2>
+	<h3>Mutual Exclusion</h3>
+	<ul>
+		<li>requirement of ensuring that no two processes or threads (henceforth referred to only as processes) are in their critical section at the same time.</li>
+		<li>critical section refers to a period of time when the process accesses a shared resource, such as shared memory</li>
+	</ul>
+	
+	<h3>Mutex</h3>
+	<ul>
+		<li>locking mechanism that enforces Mutal exclusion</li>
+		<li>used to serialise access to a section of  re-entrant code that cannot be executed concurrently by more than one thread. </li>
+		<li>A mutex object only allows one thread into a controlled section, forcing other threads which attempt to gain access to that section to wait until the first thread has exited from that section.</li>
+	</ul>
+	
+	<h3>Semaphore</h3>
+	<ul>
+		<li>A variable or abstract data type that provides a simple but useful abstraction for controlling access, by multiple processes, to a common resource in a concurrency environment</li>
+		<li>restricts the number of simultaneous users of a shared resource up to a maximum number. </li>
+		<li>Threads can request access to the resource (decrementing the semaphore), and can signal that they have finished using the resource (incrementing the semaphore).</li>
+		<li>Note a binary semaphore is <strong>not</strong> a mutex. Different purposes:  mutex is locking mechanism, semaphore is signalling mechanism.</li>
+	</ul>
+	
+	<h2>Concurrency Issues</h2>
+	<h3>Deadlock</h3>
+	<ul>
+		<li>situation in which two or more competing actions are each waiting for the other to finish, and thus neither ever does.</li>
+		<li>example situation can be compared to classic "chicken or egg" problem</li>
+	</ul>
+	<h4>Necessary Conditions</h4>
+	<ul>
+		<li>Mutual Exclusion</li>
+		<li>Hold and Wait or Resource Holding -- A process is currently holding at least one resource and requesting additional resources which are being held by other processes</li>
+		<li>No Preemption -- The operating system must not de-allocate resources once they have been allocated; they must be released by the holding process voluntarily.</li>
+		<li>Circular Wait: A process must be waiting for a resource which is being held by another process, which in turn is waiting for the first process to release the resource.</li>
+	</ul>
+	
+	<h3>Starvation</h3>
+	<ul>
+		<li>problem encountered in multitasking where a process is perpetually denied necessary resources.</li>
+		<li>usually caused by an overly simplistic scheduling algorithm.</li>
+	</ul>
+	
+</div>
+
+</body>
+</html>

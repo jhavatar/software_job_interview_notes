@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Web Services</title>
+	<meta name="description" content="Web Services">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Web Service</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Web Services</h1>
+	<ul>
+		<li>a method of communication between two electronic devices over the World Wide Web.</li>
+		<li>a software function provided at a network address over the web or the cloud</li>
+		<li>a service that is "always on"</li>
+	</ul>
+</div>
+
+<div id="content">
+
+	<h2>Terminology</h2>
+	
+	<h3>XML</h3>
+	<ul>
+		<li>Extensible Markup Language</li>
+		<li>is a markup language (modern system for annotating a document in a way that is syntactically distinguishable from the text.) that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable</li>
+		<li>design goals of XML emphasize simplicity, generality, and usability over the Internet.</li>
+		<li>Although the design of XML focuses on documents, it is widely used for the representation of arbitrary data structures</li>
+	</ul>
+	
+	<h3>JSON</h3>
+	<ul>
+		<li>JavaScript Object Notation</li>
+		<li>a text-based open standard designed for human-readable data interchange</li>
+		<li>derived from the JavaScript scripting language for representing simple data structures and associative arrays, called objects</li>
+		<li>Despite its relationship to JavaScript, it is language-independent, with parsers available for many languages.</li>
+		<li>often used for serializing and transmitting structured data over a network connection.</li>
+		<li>used primarily to transmit data between a server and web application, serving as an alternative to XML.</li>
+		<li>Basic types are:</li>
+		<ul>
+			<li>Number (double precision floating-point format in JavaScript, generally depends on implementation)</li>
+			<li>String (double-quoted Unicode, with backslash escaping)</li>
+			<li>Boolean (true or false)
+			<li>Array (an ordered sequence of values, comma-separated and enclosed in square brackets; the values do not need to be of the same type)</li>
+			<li>Object (an unordered collection of key:value pairs with the ':' character separating the key and the value, comma-separated and enclosed in curly braces; the keys must be strings and should be distinct from each other)</li>
+			<li>null (empty)</li>
+		</ul>
+	</ul>
+	
+	<h3>SOAP</h3>
+	<uL>
+		<li>Simple Object Access Protocol</li>
+		<li>a protocol specification for exchanging structured information in the implementation of Web Services in computer networks</li>
+		<li>relies on XML Information Set for its message format</li>
+		<li>usually relies on other Application Layer protocols, most notably Hypertext Transfer Protocol (HTTP) or Simple Mail Transfer Protocol (SMTP), for message negotiation and transmission.</li>
+	</uL>
+	
+	<h3>WSDL</h3>
+	<ul>
+		<li>Web Services Description Language</li>
+		<li>XML-based interface description language</li>
+		<li>used for describing the functionality offered by a web service</li>
+		<li>WSDL file provides a machine-readable description of how the service can be called, what parameters it expects, and what data structures it returns</li>
+		<li>WSDL file similar to  method signature in a programming language.</li>
+	</ul>
+	
+	<h3>REST</h3>
+	<ul>
+		<li>Representational state transfer</li>
+		<li>style of software architecture for distributed systems such as the World Wide Web.</li>
+		<li>predominant web API design model</li>
+		<li>World Wide Web represents the largest implementation of a system conforming to the REST architectural style.</li>
+		
+	</ul>
+	<h4>REST architecture</h4>
+	<ul>
+		<li>architectures conventionally consist:
+		<ul>
+			<li>clients -- initiate requests to servers</li>
+			<li>servers -- process requests and return appropriate responses</li>
+			<li>representation of resources -- Requests and responses are built around the transfer of representations of resources. Typically a document that captures the current or intended state of a resource.</li>
+			<li>resource -- any coherent and meaningful concept that may be addressed</li>
+		</ul> 
+		<li>client begins sending requests when it is ready to make the transition to a new state.</li>
+		<li>While one or more requests are outstanding, the client is considered to be in transition</li>
+		<li>representation of each application state contains links that may be used the next time the client chooses to initiate a new state-transition</li>
+	</ul>
+	<h4>REST key goals</h4>
+	<ul>
+		<li>Scalability of component interactions</li>
+		<li>Generality of interfaces</li>
+		<li>Independent deployment of components</li>
+		<li>Intermediary components to reduce latency, enforce security and encapsulate legacy systems</li>
+	</ul>
+	<h4>REST constraints</h4>
+	<ul>
+		<li>Client–server -- each component has different concerns. Components can be developed independently</li>
+		<li>Stateless -- no client context stored on the server between requests.</li>
+		<li>Cacheable -- client can cache responses</li>
+		<li>Layered system -- client cannot ordinarily tell whether it is connected directly to the end server -> security, scalability </li>
+		<li>Uniform interface between client and server -- simplifies + decouples the architecture/li>
+		
+	</ul>
+	
+	<h2>Classes of Web services</h2>
+	<ul>
+		<li>RESTful/REST-compliant Web services, e.g. Web API</li>
+		<li>arbitrary Web services, in which the service may expose an arbitrary set of operations. e.g. XML web services</li>
+	</ul>
+	
+	<h2>Web API</h3>
+	<ul>
+		<li>RESTful/REST-compliant Web services</li>
+		<li>web API implemented using HTTP and REST principles</li>
+		<li>do not require XML-based web service protocols (SOAP and WSDL) to support their light-weight interfaces.</li>
+		<li>It is a collection of resources, with four defined aspects:</li>
+		<ul>
+			<li>base URI such as http://example.com/resources/</li>
+			<li>data supported is of of Internet media type. This is often JSON but can be any other valid Internet media type provided that it is a valid hypertext standard.</li>
+			<li>the set of operations supported uses HTTP methods (e.g., GET, PUT, POST, or DELETE).</li>
+			<li>must be hypertext driven.</li>
+		</ul>
+		<li>Vocabulary re-use --uses operations and other existing features of the HTTP protocol, e.g. request methods POST, GET, PUT, POST, DELETE</li>
+	</ul>
+	
+	<h2>XML web service</h3>
+	<ul>
+		<li>use (XML) messages that follow the SOAP standard</li>
+		<li>popular with the traditional enterprises</li>
+		<li>often use a machine-readable description of the operations offered by the service written in the Web Services Description Language (WSDL)</li>
+		<li>WDSDL is not a requirement of a SOAP endpoint, but it is a prerequisite for automated client-side code generation in many Java and .NET SOAP frameworks</li>
+		<li>Encourages each application designer to define new, application-specific operations that supplant HTTP operations. e.g. "getUsers()", "getNewUsersSince(date SinceDate)"</li>
+	</ul>
+
+
+</div>
+
+</body>
+</html>

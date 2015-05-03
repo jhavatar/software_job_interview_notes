@@ -1,0 +1,10 @@
+is.paid=true
+build.ext=paid
+manifest.file=builds\\AndroidManifest.paid.xml
+src.buildvals.file=builds\\buildvals.paid.xml
+src.app.package=com.jhavatar.softwareinterviewnotespaid
+key.store=market_resources\\keystore\\keystore
+lib.ad.build.file=""
+key.alias=jhavatar-release-key
+key.store.password=3m1r1s0l0
+key.alias.password=3m1r1s0l0

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Search Algorithms</title>
+	<meta name="description" content="search algorithms">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Search Algorithms</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Search Algorithms</h1>
+	<p>Finding an item with specified properties among a collection of items</p>
+</div>
+
+<div id="content">
+
+	<h2>Binary Search</h2>
+	<p>Finds the position of a specified input value within a finite array sorted by value</p>
+	<h3>Algorithm Steps</h3>
+	<code>
+	<ol>
+		<li>Start with sub-array that is the full array</li>
+		<li>compares the search key value with the key value of the middle element of the subarray:</li>
+		<ul>
+			<li>If the keys match, then a matching element has been found and its index, or position</li>
+			<li>If the search key is less, set the sub-array to the left of the middle element and got to step 2.</li>
+			<li>If the search key is greater, set the sub-array to the right of the middle element and got to step 2.</li>
+		</ul>
+		<li> If the remaining sub-array to be searched is empty, then the key cannot be found in the array</li>
+	</ol>
+	</code>
+	<h3>Complexity</h3>
+	<ul>
+		<li>Best case performance: &#927;<math>(1)</math></li>
+		<li>Average case performance: &#927;<math>(logn)</math></li>
+		<li>Worst case performance: &#927;<math>(logn)</math></li>
+		<li>Worst case space complexity: &#927;<math>(1)</math></li>
+	</ul>
+	
+	<h2>Breadth First Search</h2>
+	<ul>
+		<li>Search for value in graph data structure</li>
+		<li>Explores all neighbour nodes before moving to next level</li>
+	</ul>
+	<h3>Algorithm Steps</h3>
+	<ol>
+		Algorithm uses a queue data structure to store intermediate results as it traverses the graph, as follows:
+	    <li>Enqueue the root node</li>
+	   	<li>Dequeue a node and examine it</li>
+	   		<ul>
+		    	<li>If the element sought is found in this node, quit the search and return a result.</li>
+		    	<li>Otherwise enqueue any successors (the direct child nodes) that have not yet been discovered.</li>
+	    	</ul>
+	    <li>If the queue is empty, every node on the graph has been examined – quit the search and return "not found".</li>
+	    <li>If the queue is not empty, repeat from Step 2.</li>
+	</ol>
+	
+	<ul>
+		<li>Note <math>|A|</math> is the cardinality, i.e. size of, set A. <math>V</math> is the set of vertices and <math>E</math> is the set of edges.</li>
+		<li>Space complexity: &#927;<math>(|V|)</math>. For trees it is equivalent to &#927;<math>(b^d)</math>, where <math>b</math> is the branching factor and <math>d</math> is the depth.</li>
+		<li>Time complexity: &#927;<math>(|V|+|E|)</math> since every vertex and every edge will be explored in the worst case. Note: &#927;<math>(|E|)</math> may vary between &#927;<math>(|V|)</math> and &#927;<math>(|V|^2)</math>, depending on how sparse the input graph is. For trees it is equivalent to &#927;<math>(b^d)</math>, where <math>b</math> is the branching factor and <math>d</math> is the depth.</li>
+	</ul>
+	
+	
+	<h2>Depth First Search</h2>
+	<ul>
+		<li>Search for value in graph data structure</li>
+		<li>Explores as far as possible along each branch before backtracking.</li>
+	</ul>
+	<h3>Algorithm Steps</h3>
+	<p>Same as Breadth first search but use a stack instead of a queue.</p>
+	<h3>Complexity</h3>
+	<p>Same as Breadth first search</p>
+	
+	
+	<h2>Best First Search</h2>
+	<ul>
+		<li>Explores a graph by expanding the most promising node chosen according to a specified rule</li>
+		<li>Used for AI and web crawlers</li>
+		<li>used by various algorithms, e.g. A*, B*</li>
+	</ul>
+	<h3>Algorithm Steps</h3>
+		<code>
+			OPEN = [initial state], list that contain only the start node <br/>
+			CLOSED = [], empty list <br/>
+			
+			while OPEN is not empty<br/>
+			do
+			<ol>
+				
+				<li>Remove the best node, according to the specified rule, from OPEN, call it n, add it to CLOSED.</li>
+				<li>If n is the goal state, backtrace path to n (through recorded parents) and return path.</li>
+				<li>Create n's successors / expand n.</li>
+				<li>For each successor do:</li>
+				<ol>
+					<li>If it is not in CLOSED: evaluate it, add it to OPEN, and record its parent.</li>
+					<li>Otherwise: change recorded parent if this new path is better than previous one.</li>
+				</ol>
+			</ol>
+			done
+		</code>
+	
+	
+	<h2>Dijkstra's algorithm</h2>
+	<ul>
+		<li>For a given source vertex (node) in the graph, the algorithm finds the path with lowest cost (i.e. the shortest path) between that vertex and every other vertex.</li>
+		<li>Used in routing and as a subroutine in other graph algorithms.</li>
+	</ul>
+	<h3>Algorithm Steps</h3>
+	<code>
+	<ol>
+	    <li>Assign to every node a tentative distance value: set it to zero for our initial node and to infinity for all other nodes.</li>
+	    <li>Mark all nodes unvisited and place in an univisited set.</li>
+	    <li>Remove the initial node from the unvisited set and set as current.</li>
+	    <li>For the current node, consider all of its unvisited neighbors and calculate their tentative distances. If this distance is less than the previously recorded tentative distance, then overwrite that distance. Even though a neighbour has been examined, it is not marked as "visited" at this time, and it remains in the unvisited set.</li>
+	    <li>mark the current node as visited and remove it from the unvisited set. A visited node will never be checked again.</li>
+	    <li>If the destination node has been marked visited (when planning a route between two specific nodes) or if the smallest tentative distance among the nodes in the unvisited set is infinity (when planning a complete traversal), then stop. The algorithm has finished.</li>
+	    <li>Select the unvisited node that is marked with the smallest tentative distance, and set it as the new "current node" then go back to step 4.</li>
+	</ol>
+	</code>
+	<h3>Complexity</h3>
+	<ul>
+		<li>If the implimentation does not use a min-priority queue it runs in &#927;<math>(|V|^2)</math> (where <math>|V|</math> is the number of vertices).</li>
+		<li>The implementation based on a min-priority queue runs in &#927;<math>(|E|+|V|log|V|</math>) (where <math>|E|</math> is the number of edges) </li>
+	</ul>
+</div>
+
+</body>
+</html>

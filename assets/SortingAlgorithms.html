@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Sorting Algorithms</title>
+	<meta name="description" content="sorting algorithms">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Comparison Sorts</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Comparison Sorts</h1>
+	<p>Performance lower bound of  <math>&Omega;(n log n)</math> -- consequence of the limited information available through comparisons alone</p>
+</div>
+
+<div id="content">
+
+	<h2>Quicksort</h2>
+	<b>Best:</b> <math>O(n log n)</math> <br>
+	<b>Worst:</b> <math>O(n<sup>2</sup>)</math><br> 
+	<b>Average:</b> <math>O(n log n)</math> <br>
+	<h4>Algorithm</h4>
+    <ol>
+	    <li>Pick an element, called a pivot, from the list.</li>
+	    <li>Reorder the list so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the partition operation.</li>
+	    <li>Recursively apply the above steps to the sub-list of elements with smaller values and separately the sub-list of elements with greater values.</li>
+	</ol>
+	
+	
+	<h2>Merge sort</h2> 
+	<b>Best:</b> <math>O(n log n)</math> <br>
+	<b>Worst:</b> <math>O(n log n)</math> <br>
+	<b>Average:</b> <math>O(n log n)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+	    <li>Divide the unsorted list into n sublists, each containing 1 element (a list of 1 element is considered sorted).</li>
+	    <li>Repeatedly merge sublists to produce new sublists until there is only 1 sublist remaining. This will be the sorted list.</li>
+	</ol>
+	
+	
+	<a name="heapsort"/>
+	<h2>Heap sort</h2> 
+	<b>Best:</b> <math>O(n log n)</math> <br>
+	<b>Worst:</b> <math>O(n log n)</math> <br>
+	<b>Average:</b> <math>O(n log n)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+	    <li>A heap is built out of the data.</li>
+	    <li>A sorted array is created by repeatedly removing the largest element from the heap, and inserting it into the array. The heap is reconstructed after each removal.</li>
+	    <li>Once all objects have been removed from the heap, we have a sorted array.</li>
+	</ol>
+	
+	
+	<h2>Insertion sort</h2> 
+	<b>Best:</b> <math>O(n)</math> <br>
+	<b>Worst:</b> <math>O(n<sup>2</sup>)</math> <br>
+	<b>Average:</b> <math>O(n<sup>2</sup>)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+    	<li>Divide the input list into two parts: the (empty) list of items already sorted, which is built up from left to right, and the list of items remaining to be sorted</li>
+	    <li>Begin at the left-most element of the array and insert each element encountered into its correct position in new sorted array</li>
+	</ol>
+	
+	
+	<h2>Selection sort</h2>
+	<b>Best:</b> <math>O(n<sup>2</sup>)</math> <br>
+	<b>Worst:</b> <math>O(n<sup>2</sup>)</math> <br>
+	<b>Average:</b> <math>O(n<sup>2</sup>)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+	    <li>Divide the input list into two parts: the (empty) list of items already sorted, which is built up from left to right, and the list of items remaining to be sorted</li>
+	    <li>Repeat finding the smallest (or largest) element in the unsorted list and place in its correct position in sorted list</li>
+	</ol>
+	
+	
+	<h2>Bubble sort</h2> 
+	<b>Best:</b> <math>O(n)</math> <br>
+	<b>Worst:</b> <math>O(n<sup>2</sup>)</math> <br>
+	<b>Average:</b> <math>O(n<sup>2</sup>)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+    	<li>Repeatedly stepping through the list to be sorted, comparing each pair of adjacent items and swapping them if they are in the wrong order.</li>
+	    <li>Pass through the list is repeated until no swaps are needed</li>
+	</ol>
+	
+	
+	<h2>Binary Search Tree sort</h2> 
+	<b>Best:</b> <math>O(n log n)</math> <br>
+	<b>Worst:</b> <math>O(n log n)</math> <br>
+	<b>Average:</b> <math>O(n log n)</math><br>
+	<h4>Algorithm</h4>
+    <ol>
+	    <li>Build binary search tree from input. For balanced binary tree each insertion is a <math>O(log n) process</math></li>
+	    <li>traverse tree inorder.</li>
+	</ol>
+</div>	
+	
+	
+	
+</body>
+</html>

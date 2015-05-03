@@ -1,0 +1,10 @@
+is.free_play=true
+build.ext=free_play
+manifest.file=builds\\AndroidManifest.free_play.xml
+src.buildvals.file=builds\\buildvals.free_play.xml
+src.app.package=com.jhavatar.softwareinterviewnotes
+key.store=market_resources\\keystore\\keystore
+lib.ad.build.file=GoogleAdMobAdsSdk-6.4.1.jar
+key.alias=jhavatar-release-key
+key.store.password=3m1r1s0l0
+key.alias.password=3m1r1s0l0

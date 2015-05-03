@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Software Design Patterns</title>
+	<meta name="description" content="design patterns">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Software Design Patterns</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Software Design Patterns</h1>
+	<p>A general reusable solution to a commonly occurring problem within a given context in software design.</p>
+	
+	
+</div>
+	
+<div id="content">
+	<button id="subsection0" targetHtml="CreationalDesignPatterns.html" type="button" data-role="button" ><h2>Creational Design Patterns</h2></button> <br>
+	
+	<button id="subsection1" targetHtml="StructuralDesignPatterns.html" type="button" data-role="button" ><h2>Structural Design Patterns</h2></button> <br>
+	
+	<button id="subsection2" targetHtml="BehavioralDesignPatterns.html" type="button" data-role="button" ><h2>Behavioral Design Patterns</h2></button> <br>
+	
+	<button id="subsection3" targetHtml="ConcurrencyDesignPatterns.html" type="button" data-role="button" ><h2>Concurrency Design Patterns</h2></button> <br>
+</div>
+
+</body>
+</html>

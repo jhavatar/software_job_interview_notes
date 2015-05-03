@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_sources">Sources</string>
+    <string name="action_search">Find</string>
+    <string name="action_search_next">Find next</string>
+    <string name="action_search_prev">Find previous</string>
+    <string name="action_search_cancel">Cancel find</string>
+    <string name="action_pro">Pro version</string>
+    <string name="search_hint">HELP ME</string>
+    <string name="button_index">Index</string>
+    
+    
+    <string name="title_toc">Table of Contents</string>
+    <string name="title_index">Index</string>
+    <string name="title_cc_theory">Computational Complexity Theory</string>
+    <string name="title_complexity_measures">Complexity Measures</string>
+    <string name="title_complexity_classes">Complexity Classes</string>
+    <string name="title_search_algorithms">Search Algorithms</string>
+    <string name="title_sort_algorithms">Sort Algorithms</string>
+    <string name="title_oo_programming">OO Programming</string>
+    <string name="title_design_principles">OO Design Principles</string>
+    <string name="title_design_patterns">Software Design Patterns</string>
+    <string name="title_creational_design_patterns">Creational Design Patterns</string>
+    <string name="title_structural_design_patterns">Structural Design Patterns</string>
+    <string name="title_behavioral_design_patterns">Behavioral Design Patterns</string>
+    <string name="title_concurrency_design_patterns">Concurrency Design Patterns</string>
+    <string name="title_data_structures">Data Structures</string>
+    <string name="title_tcpip">Internet Protocol Suite</string>
+    <string name="title_programming_paradigms">Programming Paradigms</string>
+    <string name="title_nosql">NoSQL</string>
+    <string name="title_web_services">WebServices</string>
+    <string name="title_concurrency">Concurrency</string>
+    
+    <string name="adViewTag">adViewTag</string>
+        
+    
+    <!--string name="html_oo_programming">Object-oriented Programming</string>
+    <string name="html_oo_principles">OO Design Principles</string>
+    <string name="html_search_algorithms">Search Algorithms</string>
+    <string name="html_sort_algorithms">Sort Algorithms</string>
+    <string name="html_design_patterns">Design Patterns</string-->
+    
+    <!-- string name="admob_pub_id">a152435601b79ed</string>
+    <string name="admob_unit_id">ca-app-pub-2437963888182986/8868826553</string-->
+
+</resources>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Complexity Classes</title>
+	<meta name="description" content="Complexity Classes">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Complexity Classes</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Complexity Classes</h1>
+	<p>A complexity class is a set of problems of related resource-based complexity</p>
+</div>
+	
+<div id="content">
+	<h2>Context</h2>
+	
+	<!--h3>Model of computation</h3>
+	<ul>
+		<li>The set of allowable operations used in computation and their respective costs.</li>
+		<li>Used for measuring the complexity of an algorithm in execution time and or memory space</li>
+	</ul-->
+	
+	<h3>Formal system</h3>
+	<p>Broadly defined as any well-defined system of abstract thought based on the model of mathematics. Each formal system has a formal language, which is composed by primitive symbols.</p>
+	
+	<h3>Turing machine</h3>
+	<ul>
+		<li>A hypothetical device that mathematically models a machine that mechanically manipulates symbols on a strip of tape according to a table of rules.</li>
+		<li>Despite its simplicity, a Turing machine can be adapted to simulate the logic of any computer algorithm</li>
+		<li>useful in explaining the functions of a CPU inside a computer.</li>
+	</ul>
+	
+	<h4>Consists of:</h4>
+	<ul>
+		<li>A tape:</li>
+		<ul>
+			<li>that is divided into cells, one next to the other</li>
+			<li>each cell contains a symbol from some finite alphabet. </li>
+		</ul> 
+		<li>A head that can read and write symbols on the tape and move the tape left and right one (and only one) cell at a time.</li>
+		<li>A state register that stores the state of the Turing machine, one of finitely many</li>
+		<li>A finite table of instructions that, given the state the machine is currently in and the symbol it is reading on the tape (symbol currently under the head), tells the machine to do the following in sequence </li>
+	</ul>
+	
+	<h4>Deterministic turing machine (DTM)</h4>
+	<p>The table of instructions prescribes at most one action to be performed for any given situation, i.e. state and symbol combination. For example, an X on the tape in state 3 might make the DTM write a Y on the tape, move the head one position to the right, and switch to state 5.</p>
+	
+	<h4>Non-deterministic Turing machine (NTM)</h4>
+	<p> The state and tape symbol no longer uniquely specify the next action; rather, many different actions may apply for the same combination of state and symbol. For example, an X on the tape in state 3 might now allow the NTM to write a Y, move right, and switch to state 5 or to write an X, move left, and stay in state 3.</p>
+	
+	
+	<h3>Decision problems</h3>
+	<ul>
+		<li>A question in some formal system with a yes-or-no answer, depending on the values of some input parameters.</li>
+		<li>For example, the problem "given two numbers x and y, does x evenly divide y?" is a decision problem. The answer can be either 'yes' or 'no', and depends upon the values of x and y.</li>
+	</ul>
+	
+	<h2>P</h2>
+	<ul>
+		<li>aka PTIME</li>
+		<li>The set of all decision problems where the "yes"-instances can be verified in polynomial time by a <strong>deterministic</strong> Turing machine</li>
+		<li>Cobham's thesis holds that P is the class of computational problems that are "efficiently solvable" or "tractable".</li>
+	</ul>
+	<h4>Notable problems in P</h4>
+	<ul>
+		<li>calculating the greatest common divisor</li>
+		<li>determining if a number is prime</li>
+		<li>finding a maximum matching (set of edges in a graph without common vertices)</li>
+	</ul>
+	
+	<h2>P-complete</h2>
+	<ul>
+		<li>A decision problem is P-complete if:</li>
+		<ol>
+			<li>it is in P</li>
+			<li>every problem in P can be reduced to it by using an appropriate reduction.</li>
+		</ol>
+	</ul>
+	<h4>Notable problems in P-complete</h4>
+	<ul>
+		<li>Circuit Value Problem (CVP) - Given a circuit, the inputs to the circuit, and one gate in the circuit, calculate the output of that gate</li>
+		<li>Linear programming - Maximize a linear function subject to linear inequality constraints</li>
+		<li>Lexicographically First Depth First Search Ordering</li>
+		<li>Context Free Grammar Membership - Given a context-free grammar and a string, can that string be generated by that grammar?</li>
+		<li>Horn-satisfiability: given a set of Horn clauses, is there a variable assignment which satisfies them? This is P's version of the boolean satisfiability problem.</li>
+		<li>Game of Life - Given an initial configuration of Conway's Game of Life, a particular cell, and a time T (in unary), is that cell alive after T steps?</li>
+		<li>LZW (algorithm) - Data Compression</li>
+		<li>Type inference for partial types - Given an untyped term from the lambda calculus, determine whether this term has a partial type.</li>
+	</ul>
+	
+	
+	<h2>NP</h2>
+	<ul>
+		<li>The set of all decision problems where the "yes"-instances can be verified in polynomial time by a <strong>non-deterministic</strong> Turing machine</li>
+		<li>contains the complexity class P</li>
+	</ul>
+	<h4>Notable problems in NP</h4>
+	<ul>
+		<li>All problems in P</li>
+    	<li>All NP-complete problems</li>
+    	<li>The decision problem version of the integer factorization problem: given integers n and k, is there a factor f with 1 < f < k and f dividing n?</li>
+	    <li>The graph isomorphism problem of determining whether two graphs can be drawn identically</li>
+	</ul>
+	
+	<h2>NP-complete</h2>
+	<ul>	
+		<li>Informally, an NP-complete problem is an NP problem that is at least as "tough" as any other problem in NP</li>
+    	<li>A decision problem is NP-complete if:</li>
+    	<ol>
+    		<li>it is in NP</li>
+    		<li>every problem in NP can be reduced to it in polynomial time by using an appropriate reduction. Also known as NP-HARD problems</li>
+    	</ol>
+	</ul>
+	<h4>Notable problems in NP-complete</h4>
+	<ul>
+	    <li>Boolean satisfiability problem</li>
+	    <li>Knapsack problem</li>
+	    <li>Hamiltonian path problem</li>
+	    <li>Travelling salesman problem</li>
+	    <li>Subgraph isomorphism problem</li>
+	    <li>Subset sum problem</li>
+	    <li>Clique problem</li>
+	    <li>Vertex cover problem</li>
+	    <li>Independent set problem</li>
+	    <li>Dominating set problem</li>
+	    <li>Graph coloring problem</li>
+	</ul>
+	
+	
+	<h2>P vs NP</h2>
+	<ul>
+		<li>major unsolved problem in computer science</li>
+		<li>Informally, it asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer.</li>
+		<li>If an
+		y NP-complete problem is in P, then it would follow that P = NP.</li>
+	</ul>
+	
+	<h4>P = NP consequences</h4>
+	<ul>
+		<li>lead to efficient methods for solving some of the important problems in NP.</li>
+		<li>breaking most existing crypto systems. Cryptography relies on certain problems being difficult, e.g. public-key cryptography, symmetric ciphers such as AES or 3DES.</li>
+	</ul>
+	<h4>P &#8800; NP consequences</h4>
+	<ul>
+		<li>significant advance in computational complexity theory and provide guidance for future research</li>
+	</ul>
+
+</div>
+
+</body>
+</html>

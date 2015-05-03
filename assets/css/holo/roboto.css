@@ -1,0 +1,14 @@
+@font-face {
+	font-family:"Roboto";
+	font-weight:bold;
+	font-style:normal;
+	src:url('/static/fonts/roboto/roboto-regular.eot');
+	src:local("Roboto Bold"), local("RobotoBold"), local("Roboto-Bold"), url('/static/fonts/roboto/roboto-regular.eot?#iefix') format('embedded-opentype'), url('/static/fonts/roboto/roboto-regular.woff') format('woff'), url('/static/fonts/roboto/roboto-regular.ttf') format('truetype'), url('/static/fonts/roboto/roboto-regular.svg#RobotoRegular') format('svg');
+}
+@font-face {
+	font-family:"Roboto";
+	font-weight:normal;
+	font-style:normal;
+	src:url('/static/fonts/roboto/roboto-regular.eot');
+	src:local("Roboto"), local("RobotoRegular"), local("Roboto-Regular"), url('/static/fonts/roboto/roboto-regular.eot?#iefix') format('embedded-opentype'), url('/static/fonts/roboto/roboto-regular.woff') format('woff'), url('/static/fonts/roboto/roboto-regular.ttf') format('truetype'), url('/static/fonts/roboto/roboto-regular.svg#RobotoRegular') format('svg');
+}

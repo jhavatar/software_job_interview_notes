@@ -1,0 +1,69 @@
+<!--RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainMenu$DummySectionFragment" >
+
+    <TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+     <Button
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:text="@string/button_index" />
+
+</RelativeLayout-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainMenu$DummySectionFragment" >
+    <!-- android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" -->
+    
+    <!--TextView
+        android:id="@+id/section_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        /-->
+
+	<!-- use WebViewEx cause WebView cannot do html parameters on Android 4.0.3 -->
+    <com.bricolsoftconsulting.webview.WebViewEx
+        android:id="@+id/section_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+	    android:layout_weight="1"
+        />
+    
+    
+     <!--Button
+	     android:layout_height="wrap_content"
+	     android:layout_width="wrap_content"
+	     android:text="@string/button_index" 
+	     android:layout_gravity="center_vertical|center_horizontal"
+	     android:onClick="gotoIndex" 
+	     /-->
+	  <LinearLayout android:id="@+id/adContainer"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	  </LinearLayout>
+	  
+	  <!--com.google.ads.AdView android:id="@+id/adView"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    ads:adUnitId="@string/admob_unit_id"
+	    ads:adSize="SMART_BANNER"
+		/-->
+
+</LinearLayout>
+

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Measure Complexity</title>
+	<meta name="description" content="Measure Complexity">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Measure Complexity</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Measure Complexity</h1>
+	<p>The complexity of an algorithm is often expressed using <a href="#bigonotation">big &#927; notation.</a>.</p>
+</div>
+	
+<div id="content">
+	<h2>Best, worst and average case complexity</h2>
+	<ul>
+		<li><strong>Best-case complexity</strong>: This is the complexity of solving the problem for the best input of size <math>n</math>.</li>
+		<li><strong>Worst-case complexity</strong>: This is the complexity of solving the problem for the worst input of size <math>n</math>.</li>
+		<li><strong>Average-case complexity</strong>: This complexity is only defined with respect to a probability distribution over the inputs. For instance, if all inputs of the same size are assumed to be equally likely to appear, the average case complexity can be defined with respect to the uniform distribution over all inputs of size n.</li>
+		<li>The complexity of an algorithm is usually taken to be its worst-case complexity, unless specified otherwise.</li>
+	</ul>
+	
+	<h2>Upper and lower bounds on the complexity of problems</h2>
+	<ul>
+		<li>To classify the complexity (i.e. computation resources used), one is interested in proving upper and lower bounds on the minimum amount of resources required by the most efficient algorithm solving a given problem. Resource is typically time or space.</li>
+		<li>To show an upper bound <math>T(n)</math> on the time complexity of a problem, one needs to show only that there is a particular algorithm with running time at most <math>T(n)</math>.</li>
+		<li>To show lower bound of <math>T(n)</math> for a problem is much more difficult, requires showing that no algorithm (from all possible algorithms) can have time complexity lower than <math>T(n)</math>.</li>
+	</ul>
+	
+	<h2>Bachmann–Landau notations</h2>
+	<ul>
+		<li>Describes the limiting behaviour of a function when the argument tends towards a particular value or infinity</li>
+		<li>Used to classify algorithms by how they respond (e.g., in their processing time or working space requirements) to changes in input size</li>
+	</ul>
+	
+	<a name="bigonotation"/>
+	<h3>Big &#927; notation</h3>
+	<ul>
+		<li>Big O / Big Omicron /  Big Oh</li>
+		<li>&#402;<math>(n)</math> &#8712; &#927;<math>(g(n))</math> -- &#402; is bounded above by <math>g</math> (up to constant factor) asymptotically </li>
+		<li>upper bound -- Description of a function in terms of big &#927;  notation provides an upper bound on the growth rate of the function when the argument tends towards a particular value or infinity.</li>
+		<li>Characterizes functions according to their growth rates: different functions with the same growth rate may be represented using the same &#927; notation.</li>
+		<li>Growth rate of a function is also referred to as order of the function.</li>
+	</ul>
+	<h4>Properties</h4>
+	<ul>
+		<li>If a function &#402;<math>(n)</math> can be written as a finite sum of other functions, then the fastest growing one determines the order of &#402;<math>(n)</math>. For example:<br>
+    	&#402;<math>(n) = 9 log n + 5 (log n)^3 + 3n^2 + 2n^3 = </math > &#927; <math>(n^3)</math>, as <math>n</math> &rarr; &#8734;</li>
+    	<li>sum: If &#402; and <math>g</math> are positive functions:<br> &#402; <math>+</math> &#927;<math>(g) </math>&#8834;  &#927;<math>(</math> &#402; <math> + g)</math></li>
+    	<li>product: If &#402; and <math>g</math> are positive functions:<br> &#402;  &#927;<math>(<math>g)</math> &#8834;  &#927;<math>(</math>&#402;<math>g)</math></li>
+    	<li>Multiplication by a constant: If <math>g</math> is a positive function and <math>k</math> a constant: <br>
+    	 &#927;<math>(kg) = </math>&#927;<math>(g)</math></li>
+	</ul>
+	
+
+	<h3>Big &#937;  notation</h3>
+	<ul>
+		<li>Big Omega</li>
+		<li>&#402;<math>(n)</math> &#8712; &#937;<math>(g(n))</math> -- &#402; is bounded below by <math>g</math> asymptotically </li>
+		<li>lower bound</li>
+	</ul>
+	
+	<h3>Big &#920;  notation</h3>
+	<ul>
+		<li>Big Theta</li>
+		<li>&#402;<math>(n)</math> &#8712;&#920;<math>(g(n))</math> -- &#402; is bounded above and below by <math>g</math> asymptotically </li>
+	</ul>
+	
+	
+	<h3>Common function orders</h3>
+	<p>listed in increasing order of complexity.  In each case, <math>c</math> is a constant and <math>n</math> increases without bound.</p>
+	<h4> &#927;<math>(1)</math></h4>
+	<ul>
+		<li>Name: constant</li>
+		<li>Example: Determining if a number is even or odd. Using a constant-size lookup table</li>
+	</ul>
+	<h4> &#927;<math>(log logn)</math></h4>
+	<ul>
+		<li>Name: double logarithmic</li>
+		<li>Example: Finding an item using interpolation search in a sorted array of uniformly distributed values.</li>
+	</ul>
+	<h4> &#927;<math>(logn)</math></h4>
+	<ul>
+		<li>Name: logarithmic</li>
+		<li>Example: Finding an item in a sorted array with a binary search or a balanced search tree as well as all operations in a Binomial heap.</li>
+	</ul>
+	<h4> &#927;<math>(n)</math></h4>
+	<ul>
+		<li>Name: linear</li>
+		<li>Example: Finding an item in an unsorted list or a malformed tree (worst case) or in an unsorted array; Adding two n-bit integers by ripple carry.</li>
+	</ul>
+	<h4> &#927;<math>(n logn)</math></h4>
+	<ul>
+		<li>Name: loglinear, linearithmic or quasilinear</li>
+		<li>Example: Performing a Fast Fourier transform; heapsort, quicksort (best and average case), or merge sort.</li>
+	</ul>
+	<h4> &#927;<math>(n<sup>2</sup>)</math></h4>
+	<ul>
+		<li>Name: quadratic</li>
+		<li>Example: Multiplying two n-digit numbers by a simple algorithm; bubble sort (worst case or naive implementation), Shell sort, quicksort (worst case), selection sort or insertion sort.</li>
+	</ul>
+	<h4> &#927;<math>(n<sup>c</sup>), c > 1</math></h4>
+	<ul>
+		<li>Name: polynomial or algebraic</li>
+		<li>Example: Tree-adjoining grammar parsing; maximum matching for bipartite graphs.</li>
+	</ul>
+	<h4> &#927;<math>(c<sup>n</sup>), c > 1</math></h4>
+	<ul>
+		<li>Name: exponential</li>
+		<li>Example: Finding the (exact) solution to the travelling salesman problem using dynamic programming; determining if two logical statements are equivalent using brute-force search.</li>
+	</ul>
+	<h4> &#927;<math>(n!)</math></h4>
+	<ul>
+		<li>Name: factorial</li>
+		<li>Example: Solving the traveling salesman problem via brute-force search; generating all unrestricted permutations of a poset; finding the determinant with expansion by minors.</li>
+	</ul>
+</div>
+
+</body>
+</html>	

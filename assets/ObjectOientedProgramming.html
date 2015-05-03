@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>OO Basics</title>
+	<meta name="description" content="oo basics">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Object-oriented Programming</legend>
+</fieldset>
+
+<div id="title">
+		<h1>Object-oriented Programming (OO)</h1>
+		<p>A programming paradigm that represents concepts as "objects". Objects are used to interact with one another to design applications and programs.</p>
+</div>
+	
+<div id="content">
+
+	<h2>OO Concepts</h2>
+	
+	<h3>Class</h3>
+	<p>Construct that is used to define a distinct type. Usually represents a noun, such as a person, place or thing. Defines members that enable its instances to have state and behaviour.</p>
+	
+	<h3>Object</h3>
+	<p>Instance of a class. Has identity, state and behaviour.</p>
+	
+	<h3>Method</h3>
+	<p>Subroutine (or procedure) associated with a class. Define the behaviour to be exhibited by an object.</p>
+
+	<h3>Attribute/Property</h3>
+	<p>Variables associated with a class. Hold the data that define the state of an object.</p>
+	
+	<h3>Object composition</h3>
+	<p>Way to combine simple objects into more complex ones</p>
+	<ul>
+		<li><strong>Inheritance</strong> -- A "is" B, see <a href="#inheritance">Inheritance.</a></li>
+		<li><strong>Composition</strong>  -- A "owns" B / A "has" B, B has no meaning or purpose in the system without A</li>
+		<li><strong>Aggregation</strong> -- A "uses" B, B exists independently (conceptually) from A </li>
+	</ul>
+	
+	
+	<h2>OO Features</h2>
+	
+	<h3>Abstraction</h3>
+	<p>The development of classes, objects and types in terms of their interfaces and functionality, instead of their implementation details.</p>
+	
+	<h3>Encapsulation</h3>
+	<p>The bundling of data and hiding of data implementation by restricting access to some of the object's components. Enforces modularity which keeps routines separate and less prone to conflict</p>
+	
+	<a name="inheritance"/>
+	<h3>Inheritance</h3>
+	<p>A way to establish Is-a relationships between objects. Classes (subclasses) can inherit attributes and behaviour from pre-existing classes (base classes). Allows less programming to be required and object to be re-used</p>
+	
+	<h3>Polymorphism</h3>
+	<p> Literally "multiple forms". Allows values of different data types to be handled using a uniform interface. <p>
+	<ul>
+		<li><strong>Ad hoc polymorphism</strong> --  allows a subroutines which can be applied to arguments of different types, but which behave differently depending on the type of the argument to which they are applied. e.g. method overloading, operator overloading.</li>
+		<li><strong>Parametric polymorphism</strong> --  allows a subroutines or a data type to be written generically, so that it can handle values identically without depending on their type. e.g. vector of int and vector of string both have a member function size.</li>
+		<li><strong>Subtype polymorphism</strong> -- allows a subroutine to be written to take an object of a certain type T, but also work correctly if passed an object that belongs to a type S that is a subtype of T. e.g. Triangle is a Shape</li>
+	</ul>
+	
+	
+	
+	<h2>Class Diagram</h2>
+	<p>A type of static structure diagram, in the Unified Modeling Language (UML), that describes the structure of a system by showing the system's classes, their attributes, methods, and the relationships among the classes.</p>
+	<img src="images/300px-KP-UML-Aggregation-20060420.svg.png" alt="Class diagram example of association between two classes"/>
+	
+	<h3>Class relationships</h3>
+	<p>Uxml Notation for logical connections between classes:</p>
+	<img src="images/ClassDiagRel.jpg" alt="Class relationships"/>
+	
+	<h3>Member visibility</h3>
+	<p>The following notations that must be placed before the member's (i.e., any attribute or method) name to specify its visibility:</p>
+	<ul>
+		<li>"<strong><math>+</math></strong>" &nbsp;&nbsp;&nbsp;&nbsp; Public </li>
+		<li>"<strong><math>-</math></strong>" &nbsp;&nbsp;&nbsp;&nbsp; Private </li>
+		<li>"<strong><math>#</math></strong>" &nbsp;&nbsp;&nbsp;&nbsp; Protected </li>
+		<li>"<strong><math>/</math></strong>" &nbsp;&nbsp;&nbsp;&nbsp; Derived</li>
+		<li>"<strong><math>_</math></strong>" &nbsp;&nbsp;&nbsp;&nbsp; Static</li>
+	</ul>
+</div>
+
+
+</body>
+</html>

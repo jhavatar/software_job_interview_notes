@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Internet protocol suite</title>
+	<meta name="description" content="Internet protocol suite">
+	<meta name="author" content="jhavatar">
+	
+	<!--link rel="stylesheet" type="text/css" href="css/skeleton/base.css">
+	<link rel="stylesheet" type="text/css" href="css/skeleton/skeleton.css">
+	<link rel="stylesheet" type="text/css" href="css/skeleton/layout.css"-->
+	<!-- link rel="stylesheet" type="text/css" href="css/holo/holo-base-elements.css" />
+	<link rel="stylesheet" type="text/css" href="css/holo/holo-light-elements.css" />
+	<link rel="stylesheet" type="text/css" href="css/holo/holo-base-widgets.css" />
+	<link rel="stylesheet" type="text/css" href="css/holo/holo-light-widgets.css" /-->
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+<legend>Internet protocol suite</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Internet Protocol Suite</h1>
+	<ul>
+		<li>aka TCP/IP</li>
+		<li>Is the networking model and a set of communications protocols used for the Internet and similar networks. </li>
+	</ul> 
+</div>
+
+
+	
+<div id="content">
+
+	
+
+
+	<h2>Terminology</h2>
+	
+	<h3>Packet-switched Network</h3>
+	<ul>
+		<li>A digital communications network that groups all transmitted data, irrespective of content, type, or structure into suitably sized blocks, called packets.</li>
+		<li>Each packet has to find its own route to the destination. </li>
+		<li>No predetermined path; the decision as to which node to hop to in the next step is taken only when a node is reached. </li>
+		<li>pros:</li>
+		<ul>
+			<li>Optimize utilization of available link capacity, minimize response times and increase the robustness of communication. </li>
+			<li>cheaper -- share a network</li>
+		</ul> 
+		<li>cons:</li>
+		<ul>
+			<li>variable delay and throughput depending on the traffic load in the network.</li>
+		</ul>
+	</ul>
+	
+	<h3>Circuit switched Network</h3>
+	<ul>
+		<li>Circuit switching is a methodology of implementing a telecommunications network in which two network nodes establish a dedicated communications channel (circuit) through the network before the nodes may communicate.</li>
+		<li>pro:</li>
+		<ul>
+			<li>the full bandwidth of the channel and remains connected for the duration of the communication session. </li>
+			<li>no overhead with packets</li>
+		</ul>
+		<li>cons:</li>
+		<ul>
+			<li>unused capacity guaranteed to a connection cannot be used by other connections on the same network</li>
+		</ul>
+	</ul>
+	
+	<h3>Datagram</h3>
+	<p>Basic transfer unit associated with a packet-switched network in which the delivery, arrival time, and order of arrival are not guaranteed by the network service.</p>
+	
+	<h3>Routing</h3>
+	<p> Process of selecting paths in a network along which to send network traffic</p>
+	
+	<h3>Bridging</h3>
+	<ul>
+		<li>network equipment (bridges) allow two or more communication networks, or two or more network segments, to create an aggregate network.</li>
+	</ul>
+	
+	<h3>Network switch</h3>
+	<p>A network switch or switching hub is a computer networking device that links network segments or network devices</p>
+	
+	<h3>Local Area Network (LAN)</h3>
+	<p>Computer network that interconnects computers in a limited area such as a home, school, computer laboratory, or office building using network media.</p>
+	
+	<h3>Wide Area Network</h3>
+	<p>Network that covers a broad area using private or public network transports.</p>
+	
+	
+	<h3>Internet</h3>
+	<p>Specific global system of interconnected networks that use the Internet protocol suite<p>
+
+	
+	<h3>World Wide Web (WWW)</h3>
+	<p>Global system of interlinked hypertext documents, images and other resources, logically interrelated by hyperlinks and referenced with Uniform Resource Identifiers (URIs).</p>
+	
+	<h3>Uniform Resource Identifier (URI)</h3>
+	<ul>
+		<li>String of characters used to identify a name or a web resource</li>
+		<li>Can be URL or URN</li>
+		<ul>
+			<li>A uniform resource name (URN) defines an item's identity, like a person's name</li>
+			<li>uniform resource locator (URL) provides a method for finding an item, like a person's street address:</li>
+		</ul>
+	</ul>
+	
+	<h3>Hypertext</h3>
+	<ul>
+		<li>a structured text displayed on an electronic devices that contain logical links/references (hyperlinks) to other text (or tables or images) which the reader can immediately access.</li>
+		<li>underlying concept defining the structure of the World Wide Web</li>
+	</ul>
+	
+	<h3>Domain Name System</h3>
+	<ul>
+		<li>a hierarchical distributed naming system for computers, services, or any resource connected to the Internet or a private network.</li>
+		<li>translates easily memorized domain names to the numerical IP addresses needed for the purpose of locating computer services and devices worldwide</li>
+	</ul>
+	
+	
+
+	<h2>Internet protocol suite Layers</h2>
+	<ul>
+		<li>Internet protocol has four abstraction layers, sorts all related protocols according to the scope of networking involved.</li>
+		<li>layers lowest to hightest:</li>
+		<ol>
+			<li><strong>link layer</strong> -- communication technologies for a single network segment (link) of a local area network</li>
+			<li><strong>internet layer</strong> -- connects independent networks, thus establishing internetworking.</li>
+			<li><strong>transport layer</strong> -- handles host-to-host communication</li>
+			<li><strong>application layer</strong> -- protocols for specific data communications services on a process-to-process level.</li>
+		</ol>
+	</ul>
+	<h3>Link layer</h3>
+	<ul>
+		<li>lowest component layer</li>
+		<li>move packets between the Internet layer interfaces of two different hosts on the same link</li>
+		<li>e.g. software device drivers for the network card, firmware, specialized chipsets</li>
+	</ul>
+	
+	<h3>Internet layer</h3>
+	<ul>
+		<li>Routing packets across potentially multiple networks, from source network to destination network</li>
+		<li>Agnostic of the data structures and protocols of the Transport layer</li>
+		<li>e.g. Internet Protocol (IP)</li>
+	</ul>
+	
+	<h3>Transport layer</h3>
+	<ul>
+		<li>Establishes a basic data channel that an application uses in its task-specific data exchange.</li>
+		<li>establishes host-to-host connectivity independent of the structure of user data</li>
+		<li>e.g. Transmission Control Protocol (TCP), User Datagram Protocol (UDP)</li>
+	</ul>
+	
+	<h3>Application layer</h3>
+	<ul>
+		<li>higher-level protocols used by most applications for network communication</li>
+		<li>e.g. Hypertext Transfer Protocol (HTTP), File Transfer Protocol (FTP), the Simple Mail Transfer Protocol (SMTP)</li>
+	</ul>
+	
+	
+	<h2>Internet Protocol (IP)</h2>
+	<ul>
+		<li>primary protocol in the Internet layer of the Internet protocol suite</li>
+		<li>tasks:</li>
+		<ul>
+			<li>Host addressing and identification: This is accomplished with a hierarchical IP addressing system.</li>
+			<li>Packet routing: delivering packets from the source host to the destination host across multiple potential networks solely based on the IP addresses in the packet headers.</li>
+		</ul>
+	</ul>
+	<h3>Datagram construction</h3>
+	<ul>
+		<li>has two components:</li>
+		<ul>
+			<li><strong>IP header</strong> -- header is tagged with the source IP address, the destination IP address, and other meta-data needed to route and deliver the datagram.</li>
+			<li><strong>payload</strong> -- data that is transported.</li>
+		</ul>
+	</ul>
+	
+	<h3>IP addressing and routing</h3>
+	<ul>
+		<li>IP addressing: assignment of IP addresses and associated parameters to host interfaces.</li>
+		<li>address space is divided into networks and subnetworks, involving the designation of network or routing prefixes.</li>
+		<li>IP routing is performed by all hosts, but most importantly by routers, which transport packets across network boundaries.</li>
+	</ul>
+	<h3>Data Transfer</h3>
+	<ul>
+		<li>unreliable -- best effort delivery,  no guarantees that data is delivere</li>
+	</ul>
+
+
+<h2>Transmission Control Protocol (TCP)</h2>
+<ul>
+	<li>One of the core protocols of Transport layer of the Internet protocol suite</li>
+</ul>
+<h3>Connection establishment</h3>
+<ul>
+	<li>Before a client attempts to connect with a server, the server must first bind to and listen at a port to open it up for connections: this is called a passive open. </li>
+	<li>Once the passive open is established, can open connection with three-way handshake:</li>
+	<ol>
+		<li><strong>SYN</strong> -- active open is performed by the client sending a SYN to the server. The client sets the segment's sequence number to a random value A.</li>
+		<li><strong>SYN-ACK</strong> -- In response, the server replies with a SYN-ACK. The acknowledgment number is set to one more than the received sequence number i.e. A+1, and the sequence number that the server chooses for the packet is another random number, B.</li>
+		<li><strong>ACK</strong> -- Finally, the client sends an ACK back to the server. The sequence number is set to the received acknowledgement value i.e. A+1, and the acknowledgement number is set to one more than the received sequence number i.e. B+1.</li>
+	</ol>
+</ul>
+<h3>Connection termination</h3>
+<ul>
+	<li>Uses a four-way handshake, with each side of the connection terminating independently</li>
+	<li>endpoint wishing to stop its half of the connection sends <Strong>FIN</Strong> packet and other side responmds with <strong>ACK</strong> package</li>
+</ul>
+<h3>Data transfer</h3>
+<ul>
+	<li>Reliable -- manages message acknowledgment, retransmission and timeout.</li>
+	<li>Ordered data transfer — the destination host rearranges according to sequence number</li>
+	<li>Heavyweight --  requires three packets to set up a socket connection, before any user data can be sent.</li>
+	<li>Flow control — limits the rate a sender transfers data to guarantee reliable delivery. e.g. Window scaling -- change receiving window size, i.e. change amount of data can receive before have to acknowledge sender</li>
+	<li>Congestion control</li>
+</ul>
+<h3>Aplications</h3>
+<ul>
+	<li>point of sale</li>
+	<li>accounting</li>
+	<li>database systems</li>
+</ul>
+
+<h2>User Datagram Protocol (UDP)</h2>
+<ul>
+	<li>One of the core protocols of Transport layer of the Internet protocol suite (IP)</li>
+</ul>
+<h3>Data transfer</h3>
+<ul>
+	<li>Unreliable --  There is no handshaking dialogues, concept of acknowledgment, retransmission, or timeout.</li>
+	<li>Not ordered – If two messages are sent to the same recipient, the order in which they arrive cannot be predicted.</li>
+	<li>lightweight – There is no ordering of messages, no tracking connections, etc. It is a small transport layer designed on top of IP.</li>
+	<li>Datagrams:</li>
+	<ul>
+		<li>only checked for integrity only if they arrive</li>
+		<li>provides checksums for data integrity</li>
+	</ul>
+	<li>No congestion control</li>
+</ul>
+<h3>Aplications</h3>
+<ul>
+	<li>Domain Name System (DNS), Simple Network Management Protocol (SNMP), the Routing Information Protocol (RIP)[2] and the Dynamic Host Configuration Protocol (DHCP)</li>
+	<li>Voice and video traffic</li>
+	<li>Realtime streaming</li>
+	<li>online games</li>
+</ul>
+
+<h2>Hypertext Transfer Protocol (HTTP)</h2>
+<ul>
+	<li>One of the protocols of Application layer of the Internet protocol suite</li>
+	<li>foundation of data communication for the World Wide Web</li>
+	<li>the protocol to exchange or transfer hypertext.</li>
+	<li>functions as a request-response protocol in the client-server computing model. e.g. web browser as client and web site as server</li>
+	<li>HTTP resources are identified and located on the network by Uniform Resource Identifiers (URIs)</li>
+	<li>HTTP is a stateless protocol. Does not require server to retain information anout each user</li>
+</ul>
+<h3>HTTP Session</h3>
+<ul>
+	<li>HTTP session is a sequence of network request-response transactions.</li>
+	<li>An HTTP client initiates a request by establishing a Transmission Control Protocol (TCP) connection to a particular port on a server (typically port 80)</li>
+	<li>An HTTP server listening on that port waits for a client's request message. Upon receiving the request, the server sends back a status line (e.g. "HTTP/1.1 200 OK") and a message of its own. </li>
+	<li>The body of this message is typically the requested resource, although an error message or other information may also be returned.</li>
+</ul>
+<h3>Request Methods</h3>
+<ul>
+	<li>HTTP defines methods (sometimes referred to as verbs) to indicate the desired action to be performed on the identified resource.</li>
+	<li><strong>GET:</strong> Requests a representation of the specified resource. should only retrieve data and should have no other effect. </li>
+	<li><strong>HEAD:</strong> Asks for the response identical to the one that would correspond to a GET request, but without the response body</li>
+	<li><strong>POST:</strong> Requests that the server accept the entity enclosed in the request as a new subordinate of the web resource identified by the URI. 
+		The data POSTed might be: annotation for existing resources; a message for a bulletin board, a block of data that is the result of submitting a web form to a data-handling process; or an item to add to a database.</li>
+	<li><strong>PUT:</strong> Requests that the enclosed entity be stored under the supplied URI. If the URI exists, modify resource; else, server can create the resource with that URI. </li>
+	<li><strong>DELETE:</strong> Deletes the specified resource.</li>
+	<li><strong>TRACE:</strong> Echoes back the received request so that a client can see what (if any) changes or additions have been made by intermediate servers.</li>
+	<li><strong>OPTIONS:</strong> Returns the HTTP methods that the server supports for specified URL.</li>
+	<li><strong>CONNECT:</strong> Converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy</li>
+	<li><strong>PATCH:</strong> Is used to apply partial modifications to a resource</li>
+</ul>
+
+<h2>Steps when clicking web page link</h2>
+<p>Assuming the simplest possible HTTP request, no proxies and IPv4</p>
+<ol>
+    <li>browser checks cache; if requested object is in cache and is fresh, skip to #9</li>
+    <li>browser asks OS for server's IP address</li>
+    <li>OS makes a DNS lookup and replies the IP address to the browser</li>
+    <li>browser opens a TCP connection to server (this step is much more complex with HTTPS)</li>
+   	<li>browser sends the HTTP request through TCP connection</li>
+    <li>browser receives HTTP response and may close the TCP connection, or reuse it for another request</li>
+    <li>browser checks if the response is a redirect (3xx result status codes), authorization request (401), error (4xx and 5xx), etc.; these are handled differently from normal responses (2xx)</li>
+    <li>if cacheable, response is stored in caches</li>
+    <li>browser decodes response (e.g. if it's gzipped)</li>
+    <li>browser determines what to do with response (e.g. is it a HTML page, is it an image, is it a sound clip?)</li>
+    <li>browser renders response, or offers a download dialog for unrecognized types</li>
+</ol>
+
+</div>
+
+
+
+</body>
+</html>

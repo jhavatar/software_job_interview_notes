@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Concurrency Design Patterns</title>
+	<meta name="description" content="concurrency design patterns">
+	<meta name="author" content="jhavatar">
+  
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+  <!-- 
+  template:
+	<h2>TITLE</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+   -->
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Concurrency Design Patterns</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Concurrency Design Patterns</h2>
+	<p>Design patterns that deal with the multi-threaded programming paradigm</p>
+</div>
+
+<div id="content">
+
+	<h2>Active Object</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Decouple method execution from method invocation</li>
+		<li>Simplify synchronized access for objects that each reside in their own thread of control.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Introduce concurrency, by using asynchronous method invocation and a scheduler for handling requests.</li>
+		<li>Components/Roles:</li>
+		<ul>
+			<li>Proxy -- only publicly visible part. Provides an interface towards clients.</li>
+			<li>Method Request -- request to execute a method. contains information about the method</li>
+			<li>Scheduler -- Proxy passes Method Request to Scheduler. Scheduler decides which order to queue the Method Requests. Executes the Method Requests.</li>
+			<li>Activation Queue -- queue on which Method Request is placed by Scheduler</li>
+			<li>Servant -- performs the actual work when method is executed.</li>
+			<li>Future or Callback -- used to receive the returning data.</li>
+		</ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+	
+	
+	<h2>Balking pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Prevent object from executing action, when the object is not in a valid or complete state.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Only executes an action on an object when the object is in a particular state.</li>
+		<li>Will reject/"balk" at the action request if object is not in a valid or complete state.</li>
+		<li>This usually means returning without performing any actions.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>Become quite antiquated, as other modern patterns like Guarded Suspension and Read-write Lock replaced it.</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Thread-safe operations, like ignoring commands when still processing previous actions.</li>
+		<li>If possible to only execute one task at time, before executing task block to check if busy flag is set. If flag is set then return without executing task.</li>
+		<li>Java code example:</li>
+		<pre><code>
+public void job() {
+	synchronized(this) {
+		if (jobInProgress) {
+	    	return;
+	    }
+	    jobInProgress = true;
+	}
+	// Code to execute job goes here
+	// ...
+}
+	</code></pre>
+	</ul>
+	
+	
+	<h2>Double-checked locking</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>reduce the overhead of acquiring a lock by first testing the locking criterion (the "lock hint") without actually acquiring the lock</li>
+		<li>NB!, when implemented in some language/hardware combinations, can be unsafe.</li>
+		
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Only if the locking criterion check indicates that locking is required does the actual locking logic proceed.</li>
+		<li>NB!, when implemented in some language/hardware combinations, can be unsafe.</li>
+		<li>Not easy to distinguish between a correct implementation of the technique and one that has subtle problems.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Java code example: (NB, the volatile keyword now ensures that multiple threads handle the singleton instance correctly.) </li>
+		<pre><code>
+class Foo {
+    private volatile Helper helper;
+    public Helper getHelper() {
+        Helper result = helper;
+        if (result == null) {
+            synchronized(this) {
+                result = helper;
+                if (result == null) {
+                    helper = result = new Helper();
+                }
+            }
+        }
+        return result;
+    }
+ 
+    // other functions and members...
+}
+    	</pre></code>
+	</ul>
+
+
+
+
+
+	<h2>Guarded suspension</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Managing operations that require both a lock to be acquired and a precondition to be satisfied before the operation can be executed</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Involves suspending the method call, and the calling thread, until the precondition (acting as a guard) is satisfied.</li>
+		<li>Typically applied to method calls in object-oriented programs</li>
+		<li>Because of blocking, generally only used when the developer knows that a method call will be suspended for a finite and reasonable period of time.</li>	
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>If the developer knows that the method call suspension will be indefinite or for an unacceptably long period, then the balking pattern may be preferred.</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Java code example:</li>
+		<pre><code>
+public class Example {
+	synchronized void guardedMethod() {
+		while (!preCondition()) {
+			try {
+				//Continue to wait
+				wait();
+				//…
+			} 
+			catch (InterruptedException e) {
+				//…
+			}
+		}
+		//Actual task implementation
+	}
+	
+	synchronized void alterObjectStateMethod() {
+		//Change the object state
+		//…..
+		//Inform waiting threads
+		notify();
+	}
+}
+		</pre></code>
+	</ul>
+	
+	
+	
+	<h2>Monitor (synchronization)</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>object or module intended to be used safely by more than one thread</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Defining characteristic of a monitor is that its methods are executed with mutual exclusion</li>
+		<li>At each point in time, at most one thread may be executing any of its methods.</li>
+		<li>Provide a mechanism for threads to temporarily give up exclusive access, in order to wait for some condition to be met, before regaining exclusive access and resuming their task.</li>
+		<li>have a mechanism for signaling other threads that such conditions have been met</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+
+
+
+	<h2>Reactor pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Event handling, handling service requests delivered concurrently to a service handler by one or more inputs.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Demultiplexes the incoming requests and dispatches them synchronously to the associated request handlers.[</li>
+		<li>Components/Roles:</li>
+		<ul>
+		    <li>Resources -- Any resource that can provide input to or output from the system.</li>
+		    <li>Synchronous Event Demultiplexer -- Uses an event loop to block on all resources. When it is possible to start a synchronous operation on a resource without blocking, the demultiplexer sends the resource to the dispatcher.</li>
+		   	<li>Dispatcher -- Handles registering and unregistering of request handlers. Dispatches resources from the demultiplexer to the associated request handler.</li>
+		    <li>Request Handler -- An application defined request handler and its associated resource.</li>
+		</ul>
+		<li>separates application specific code from the implementation -- modular, reusable parts.</li>
+		<li>due to the synchronous calling of request handlers, the reactor pattern allows for simple coarse-grain concurrency while not adding the complexity of multiple threads to the system.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+	
+	
+	
+	
+	<h2>Readers–writer lock</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Solve Readers-writers problem: situations in which many threads must access the same shared memory at one time, some reading and some writing, with the natural constraint that no process may access the share for reading or writing while another process is in the act of writing to it</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>aka shared-exclusive lock, multiple readers, single-writer lock, multi-reader lock</li>
+		<li>A mutex, in that it controls access to a shared resource</li>
+		<li>allowes concurrent access to multiple threads for reading but restricting access to a single thread for writes (or other changes) to the resource.</li>
+		<li>can lead to write-starvation if contention is high enough, i.e. as long as at least one reading thread holds the lock, no writer thread will be able to acquire it.</li>
+		
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Control access to a data structure in memory that can't be updated atomically and isn't valid (and shouldn't be read by another thread) until the update is complete.</li>
+	</ul>
+	
+	
+	
+	<h2>Scheduler pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Explicitly control when threads may execute single-threaded code,</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>The scheduler pattern uses an object that explicitly sequences waiting threads.</li>
+		<li>Provides a mechanism to implement a scheduling policy, but is independent of any specific scheduling policy</li>
+		</li>Scheduling policy is encapsulated in its own class and is reusable.</li>
+		<li>Adds significant overhead beyond that required to call a synchronized method.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+	
+	
+	
+	<h2>Thread pool pattern</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Manage multiple threads used to perform more tasks than there are threads</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>aka replicated workers or worker-crew model</li>
+		<li>number of threads are created to perform a number of tasks, tasks and are usually organized in a queue.</li>
+		<li>Typically, there are many more tasks than threads</li>
+		<li>As soon as a thread completes its task, it will request the next task from the queue until all tasks have been completed.</li>
+		<li>The thread can then terminate, or sleep until there are new tasks available.</li>
+		<li>number of threads used is a parameter that can be tuned to provide the best performance. </li>
+		<li>The algorithm used to determine when to create or destroy threads impacts performance:</li>
+		<ul>
+			<li>create too many threads, and resources are wasted and time also wasted creating any unused threads</li>
+			<li>destroy too many threads and more time will be spent later creating them again</li>
+			<li>creating threads too slowly might result in poor client performance (long wait times)</li>
+			<li>destroying threads too slowly may starve other processes of resources</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>A web server can add threads if numerous web page requests come in and can remove threads when those requests taper down.</li>
+	</ul>
+	
+	
+	
+	<h2>Thread-local storage (TLS)</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>ensure multiple threads referring to the same static or global variable are actually referring to different memory locations</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>use static or global memory local to a thread.</li>
+		<li>normally all threads in a process share the same address space, which is sometimes undesirable.</li>
+		<li>since all threads share an address space, no fixed memory location can be used to store the location of the storage.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>In Java, thread-local variables are implemented by the ThreadLocal class object:</li>
+		<pre><code>
+private static final ThreadLocal<Integer> myThreadLocalInteger = new ThreadLocal<Integer>();
+		</code>
+		</pre>
+	</ul>
+
+</div>
+
+
+</body>
+</html>

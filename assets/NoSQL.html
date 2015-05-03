@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>NoSQL</title>
+	<meta name="description" content="NoSQL">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>NoSQL</legend>
+</fieldset>
+
+<div id="title">
+	<h1>NoSQL</h1>
+	<ul>
+		<li>A NoSQL database provides a mechanism for storage and retrieval of data that uses looser consistency models than traditional relational databases.</li>
+		<li>Motivations for this approach include simplicity of design, horizontal scaling and finer control over availability.</li>
+		<li>4 database types:</li>
+		<ul>
+			<li>Key–value stores</li>
+			<li>Document Store</li>
+			<li>Graph database</li>	
+			<li>Column Family Databases</li>
+		</ul>
+	</ul>
+</div>
+
+<div id="content">
+
+	<h2>Terminology</h2>
+	
+	<h3>Relational model</h3>
+	<p>a method of structuring data using relations, which are grid-like mathematical structures consisting of columns and rows.<p>
+	
+	<h3>Relational Database (RDBS)</h3>
+	<p>A database that has a collection of tables of data items, all of which is formally described and organized according to the relational model.</p>
+	
+	<h3>Database normalization</h3>
+	<ul>
+		<li>The process of organizing the fields and tables of a relational database to minimize redundancy and dependency.</li>
+		<li>usually involves dividing large tables into smaller (and less redundant) tables and defining relationships between them. </li>
+	</ul>
+	
+	<h3>Partitioning</h3>
+	<ul>
+		<li>A division of a logical database or its constituting elements into distinct independent parts. </li>
+		<li>done for manageability, performance or availability reasons.</li>
+		<li>Partition methods:</li>
+		<ul>
+			<li>Horizontal partitioning / Shard</li>
+			<li>Vertical partitioning</li>
+		</ul>
+	</ul>
+	
+	<h3>Horizontal partitioning / Shard</h3>
+	<ul>
+		<li>Shard is a individual horizontal partition in a database or search engine.</li>
+		<li>Database design principle whereby rows of a database table are held separately, rather than being split into columns </li>
+		<li>Advantages</li>
+		<ul>
+			<li>rows in each table is reduced --> reduces index size --> improves performance.</li>
+			<li>shards can be placed on separate hardware --> distribution over a large number of machines --> performance spread out over multiple machines --> improving performance.</li>
+			<li>if the shard is based on some real-world segmentation of the data(e.g., European customers v. American customers) then it may be possible to infer the appropriate shard membership and query only the relevant shard.</li>
+		</ul>
+	</ul>
+	
+	<h3>Vertical Partitioning</h3>
+	<ul>
+		<li>involves creating tables with fewer columns and using additional tables to store the remaining columns</li>
+		<li>goes beyond normalization and can be performed even if normalized</li>
+		<li>Advantages</li>
+		<ul>
+			<li>row splitting: storing infrequently used tables or tabels with very wide columns on a different device --> improve performance</li>
+			<li>split dynamic data (slow to find) from static data (fast to find) in a table where the dynamic data is not used as often as the static. -- performance increase when accessing the static data</li>
+		</ul>
+	</ul>
+	
+	<h3>MapReduce</h3>
+	<ul>
+		<li>a programming model for processing large data sets with a parallel, distributed algorithm on a cluster.</li>
+		<li>inspired by the map and reduce functions commonly used in functional programming</li>
+		<li>comprises of Map() procedure and Reduce() procedure</li>
+		<li><strong>Map step:</strong> The master node takes the input, divides it into smaller sub-problems, and distributes them to worker nodes. A worker node may do this again in turn, leading to a multi-level tree structure. The worker node processes the smaller problem, and passes the answer back to its master node.</li>
+		<li><strong>Reduce step:</strong> The master node then collects the answers to all the sub-problems and combines them in some way to form the output – the answer to the problem it was originally trying to solve.</li>
+	</ul>
+	
+	<h2>NoSQL pros & cons</h2>
+	<h3>Pros</h3>
+	<ul>
+		<li>Horizontal scalability. There’s no need for complex joins and data can be easily sharded and processed in parallel.</li>
+		<li>handle big data</li>
+		<li>Flexible data models - more relaxed or nonexistant. application changes and database schema changes not as big an issue.</li>
+		<li>hardware cost. optimized for clusters of cheaper hardware. cost per gigabyte or transaction/second for NoSQL can be many times less than the cost for RDBMS</li>
+	</ul>
+	<h3>Cons</h3>
+	<ul>
+		<li>Not as mature as RDBS</li>
+		<li>less support options</li>
+		<li>not optimized for analytics and business intelligence -- queries requires significant programming expertise, and commonly used BI tools do not provide connectivity to NoSQL.</li>
+		<li>less expertise</li>
+	</ul>
+
+	<h2>Document Store</h2>
+	<ul>
+		<li>central concept of a "document"</li>
+		<li>Document encapsulates and encodes data</li>
+		<li>documents are grouped in collections</li>
+		<li>compared to RDBS, collections could be considered as tables and documents as records</li>
+		<li>documents in a collection may have fields that are completely different, while every record in a table has the same sequence of fields</li>
+		<li>Documents are addressed in the database via a unique key that represents that document.</li>
+		<li>offer an API or query language that will allow retrieval of documents based on their contents.</li>
+		<li>examples: CouchDB, MongoDB</li>
+	</ul>
+	<h4>Classification based on feature</h4>
+	<ul>
+		<li><strong>performance: </strong>high</li>
+		<li><strong>scalability: </strong>variable (high)</li>
+		<li><strong>flexibility: </strong>high</li>
+		<li><strong>complexity: </strong>low</li>
+		<li><strong>functionality: </strong>variable (low)</li>
+	</ul>
+	
+	
+	<h2>Graph Database</h2>
+	<ul>
+		<li>designed for data whose relations are well represented as a graph</li>
+		<li>The kind of data could be social relations, public transport links, road maps or network topologies, for example.</li>
+		<li>examples: Neo4J, Allegro, Virtuoso</li>
+	</ul>
+	<h4>Classification based on feature</h4>
+	<ul>
+		<li><strong>performance: </strong>variable</li>
+		<li><strong>scalability: </strong>variable</li>
+		<li><strong>flexibility: </strong>high</li>
+		<li><strong>complexity: </strong>high</li>
+		<li><strong>functionality: </strong>graph theory</li>
+	</ul>
+	
+	
+	
+	<h2>Key–value stores</h2>
+	<ul>
+		<li>Allow the application to store its data in a schema-less way.</li>
+		<li>the data can be stored in a datatype of a programming language or an object -- there is no need for a fixed data model.</li>
+		<li>examples: Dynamo, Riak, Redis, Cache, Project Voldemort</li>
+	</ul>
+	<h4>Classification based on feature</h4>
+	<ul>
+		<li><strong>performance: </strong>high</li>
+		<li><strong>scalability: </strong>high</li>
+		<li><strong>flexibility: </strong>high</li>
+		<li><strong>complexity: </strong>none</li>
+		<li><strong>functionality: </strong>variable (none)</li>
+	</ul>
+	
+	
+	<h2>Column Family Databases</h2>
+	<ul>
+		<li>based on Google’s BigTable implementation.</li>
+		<li>In the context of a relational database table, a column is a set of data values of a particular simple type, one for each row of the table.</li>
+		<li>A column family database can have different columns on each row so is not relational and doesn’t have what qualifies in an RDBMS as a table.</li>
+		<li>A column by itself is just a key-value pair that exists in a column family. </li>
+		<li>examples: Apache HBase, Hypertable, Cassandra</li>
+	</ul>
+	<h4>Classification based on feature</h4>
+	<ul>
+		<li><strong>performance: </strong>high</li>
+		<li><strong>scalability: </strong>high</li>
+		<li><strong>flexibility: </strong>moderate</li>
+		<li><strong>complexity: </strong>low</li>
+		<li><strong>functionality: </strong>minimal</li>
+	</ul>
+</div>
+
+</body>
+</html>

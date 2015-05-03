@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Creational Design Patterns</title>
+	<meta name="description" content="creational design patterns">
+	<meta name="author" content="jhavatar">
+  
+  	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+	    function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+  <!-- 
+  template:
+	<h3>TITLE</h3>
+	<h4>Intent</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li></li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li></li>
+	</ul>
+   -->
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Creational Design Patterns</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Creational Design Patterns </h1>
+	<p>Deal with object creation mechanisms, Create objects in a manner suitable to the situation.</p>
+</div>
+	
+<div id="content">
+	<!--ul>
+		<li><a href="#factorymethod">Factory Method</a></li>
+		<li><a href="#abstractfactory">Abstract Factory</a></li>
+		<li><a href="#builder">Builder</a></li>
+		<li><a href="#objectpool">Object Pool</a></li>
+		<li><a href="#prototype">Prototype</a></li>
+		<li><a href="#singleton">Singleton</a></li>
+	</ul-->
+	
+	<h2>Factory Method</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Define a class for creating an object, but let subclasses decide which class to instantiate.</li>	
+		<li>Standardize the architectural model for a range of applications, but allow for individual applications to define their own domain objects and provide for their instantiation.</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Instead of factory with method for each object type, define a factory class with a factory method.</li>
+		<li>Inheritance is used to create object type -- factory subclass overrides factory method.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Manufacturers of plastic toys process plastic molding powder, and inject the plastic into molds of the desired shapes. The class of toy (car, action figure, etc.) is determined by the mold.</li>
+		<li>When staying in a hotel you first have to check in. The person working at the front desk will give you a key to your room after you've paid for the room you want and this way he can be looked at as a room factory. While staying at the hotel, you might need to make a phone call, so you call the front desk and the person there will connect you with the number you need, becoming a phone-call factory, because he controls the access to calls, too.</li>
+	</ul>
+	
+	
+	<h2>Abstract Factory</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Provide an interface for creating families of related or dependent objects without specifying their concrete classes.</li>
+		<li>A way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>A Factory interface is defined with multiple factory methods. A concrete factory that implements the interface is passed to another object to delegate object instantiation.</li>
+		<li>An Abstract Factory is a class with several Factory methods. So basically, an Abstract Factory class has a collection of different Factory Methods to create different desired Concrete objects.</li>
+		<li>Each concrete factory sub-class implements the Factory methods for a particular family of products. The Abstract Factory pattern can be considered as an extension of the Factory Method pattern.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	
+	
+	<h2>Builder</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Separate the construction of a complex object from its representation so that the same construction process can create different representations.</li>
+		<li>Encapsulate the construction of a product and allow it to be constructed in steps</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Components/Roles</li>
+		<ul>
+			<li>Builder -- interface</li>
+			<li>Concrete Builder -- implementation of the Builder</li>
+			<li>Director -- invokes “builder” services on the Builder step by step as it interprets an external format</li>
+		</ul>
+		<li>The Builder creates part of the complex object each time it is called and maintains all intermediate state</li>
+		<li>When the product is finished, the client retrieves the result from the Builder</li>
+		<li>Pros</li>
+		<ul>
+			<li>Encapsulates the way complex object is created</li>
+			<li>Allows objects to be created in a multistep varying process</li>
+			<li>Hides internal representation of product from client</li>
+			<li>Product implementations can be swapped because client only sees an abstract interface</li>
+		</ul>
+		<li>Cons</li>
+		<ul>
+			<li>Constructing object requires more domain knowledge of the client than when using factory</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Vehicle Manufacturer: From the same of parts and construction steps, can build a car, a bicycle, a motorcycle or a scooter. In this case the Builder will become the VehicleBuilder. The ConcreteBuilders are CarBuilder, MotorCycleBuilder, ...</li>
+	</ul>
+	
+	
+	<h2>Object Pool</h2>
+	<p>AKA Resource Pool</p>
+	<h4>Intent</h4>
+	<ul>
+		<li>improve managing object caching by avoiding creating instances by reusing them</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>A client with access to a Object pool can avoid creating a new Objects by simply asking the pool for one that has already been instantiated instead. </li>
+		<li>The pool can create new objects if empty, or restrict the number of objects created.</li>
+		<li>Effective in situations:</li>
+		<ul>
+			<li>cost of initializing is high</li>
+			<li>the rate of instantiation is high</li>
+			<li>number of instantiations in use at any one time is low</li>
+		</ul>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>usually implemented as Singletons</li>
+		<li>Factory Method pattern can be used to encapsulate the creation logic for objects</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Database connections. Opening connection each time affects performance. Can also limit the maximum number of connections possibel at a time.</li>
+	</ul>
+	
+	
+	<h2>Prototype</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Avoid the cost of creating a new object in the standard way (e.g., using the 'new' keyword) when it is prohibitively expensive for a given application.</li>
+		<li>Avoid subclasses of an object creator in the client application,</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.</li>
+		<li>Implements clone() operation</li>
+		<li>Use one instance of a class for use as a breeder of all future instances.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>The mitotic division of a cell - resulting in two identical cells</li>
+		<li>A sales analysis on a set of data from a database. We copy the information from the database, encapsulate it into an object and do the analysis. But if another analysis is needed, it is easier just to clone then the object used in the first analysis for the other analysis.</li>
+	</ul>
+	
+	
+	
+	<h2>Singleton</h2>
+	<h4>Intent</h4>
+	<ul>
+		<li>Require a single instance</li>
+		<li>provide global point of access to it</li>
+		<li>Encapsulate lazy initialization</li>
+	</ul>
+	<h4>Description</h4>
+	<ul>
+		<li>The single instance is a private static attribute.</li>
+		<li>The accessor function is a public static method.</li>
+		<li>Use one instance of a class for use as a breeder of all future instances.</li>
+	</ul>
+	<h4>Notes</h4>
+	<ul>
+		<li>-</li>
+	</ul>
+	<h4>Example</h4>
+	<ul>
+		<li>Logger classes. Provides a global logging access point in all the application components without being necessary to create an object each time a logging operations is performed.</li>
+	</ul>
+</div>
+	
+</body>
+</html>
