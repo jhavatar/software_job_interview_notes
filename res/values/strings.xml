@@ -32,6 +32,7 @@
     <string name="title_nosql">NoSQL</string>
     <string name="title_web_services">WebServices</string>
     <string name="title_concurrency">Concurrency</string>
+     <string name="title_android">Android</string>
     
     <string name="adViewTag">adViewTag</string>
         

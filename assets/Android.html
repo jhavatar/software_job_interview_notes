@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Android</title>
+	<meta name="description" content="Android">
+	<meta name="author" content="jhavatar">
+	
+	<link rel="stylesheet" type="text/css" href="css/content.css">
+	<link rel="stylesheet" type="text/css" href="css/toc.css">
+	
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery-2.0.3.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/jquery.toc.js"></script>
+	<script charset="utf-8" type="text/javascript" src="scripts/myscripts.js"></script>
+	<script type="text/javascript" charset="utf-8">  
+		function load() {
+	    	var urlVars = getUrlVars();
+	    	setSubsections(urlVars);
+	    	loadTOC();
+	    }
+	</script>
+</head>
+<body onload="load()">
+<fieldset style=" border: 1px solid #000; display: inline-block; border-radius:8px;">
+	<div id="toc"></div>
+	<legend>Android</legend>
+</fieldset>
+
+<div id="title">
+	<h1>Android</h1>
+	Android is a mobile operating system (OS) based on the Linux kernel and currently developed by Google
+</div>
+
+<div id="content">
+
+	<h2>Terminology</h2>
+	<ul>
+		<li><strong>ANR</strong> -- Application Not Responding. Application cannot respond to user input because a task is blocking the UI thread.  </li>
+	</ul>
+
+	<h2>Activities</h2>
+	An activity is a single, focused thing that the user can do.
+	
+	<h3>Activity lifecycle</h3>
+	Activities in the system are managed as an activity stack.
+	
+	<ul>
+		<li>Activity is killable between after onPause() to the start of onResume() (>Honeycomb) -- the activity may killed by the system at any time after a killable method returns without another line of its code being executed</li>
+		<li>because of killable methods you should use the onStop() method (>Honeycomb) to write any persistent data (such as user edits) to storage</li>
+	</ul>
+	
+	<h4>Activity's 4 lifecycle states</h4>
+	<ol>
+		<li><strong>Active/focused/foreground</strong> -- When the activity in the foreground of the screen, i.e. at the top of the stack.</li>
+		<li><strong>Paused/visible</strong> but unfocused -- When the activity has lost focus but is still visible, e.g. transparent non-full-screen activity is shown over activity. Activity still retains all state and member information but can be killed by the system in extreme low memory situations. (Not caused by showing dialog) </li>
+		<li><strong>Stopped/background</strong> -- When the activity is completely obscured by another activity. Activity still retains all state and member information but may be killed by the system when memory is needed elsewhere</li>
+		<li><strong>destroyed</strong> -- When the system has finished the activity, or simply killed its process. When it is displayed again to the user, it must be completely restarted and restored to its previous state.</li>
+	</ol>
+	
+	<img src="images/activity_lifecycle.png" alt="Important state paths of an Activity. The square rectangles represent callback methods you can implement to perform operations when the Activity moves between states. The colored ovals are major states the Activity can be in."/>
+
+
+	<h3>Persisting activity's state</h3>
+	<h4>Save state</h4>
+	<ul>
+		<li>onResume()/onStop() : called when activity goes to background</li>
+		<li>onSaveInstanceState() : called before an activity may be killed so that when it comes back some time in the future it can restore its state. Note, not part of activity life cycle, e.g. may not called for instances like when activity B is launched in front of activity A; the system may avoid calling onSaveInstanceState(Bundle) on activity A if it isn't killed during the lifetime of B since the state of the user interface of A will stay intact.   </li>
+	</ul>
+	
+	<h4>Restore state</h4>
+	<ul>
+		<li><strong>onCreate()</strong> : check whether the state Bundle parameter is null before you attempt to read it. If it is not null, then the system is restoring a previous one that was destroyed (and not creting a new one). </li>
+		<li><strong>onRestoreInstanceState()</strong>Called after onStart() when the activity is being re-initialized from a previously saved state in savedInstanceState.</li>
+	</ul>
+
+
+
+	<h2>Fragments</h2>
+	Represents a behavior or a portion of user interface in an Activity.
+	
+	<ul>
+		<li>Must always be embedded in an activity</li>
+		<li>Fragment's lifecycle is directly affected by the host activity's lifecycle</li>
+		<li>When you add a fragment as a part of your activity layout, it lives in a ViewGroup inside the activity's view hierarchy </li>
+		<li>Fragment defines its own view layout.</li>
+		<li>Fragment states same as activity</li>
+	</ul>
+	
+	<h3>Fragment lifecycle</h3>
+	
+	<img src="images/fragment_lifecycle.png" alt="The lifecycle of a fragment (while its activity is running)."/>
+	
+	<img src="images/activity_fragment_lifecycle.png" alt="The effect of the activity lifecycle on the fragment lifecycle."/>
+	
+	
+	
+	<h2>Intents</h2>
+	<ul>
+		<li>passive data structure holding an abstract description of an action to be performed.</li>
+		<li>uses: to launch an Activity; start service; communicate with background service;  </li>
+	</ul>
+	
+	<h3>Structure</h3>
+	Primary attributes:
+	<ul>
+		<li><strong>action</strong> -- The general action to be performed, such as ACTION_VIEW, ACTION_EDIT, ACTION_MAIN, etc.</li>
+		<li><strong>data</strong> -- The data to operate on, such as a person record in the contacts database, expressed as a Uri.</li>
+	</ul>
+	
+	Secondary attributes:
+	<ul>
+		<li><strong>category</strong> -- additional information about the action to execute. For example, CATEGORY_LAUNCHER means it should appear in the Launcher as a top-level application</li>
+
+	    <li><strong>type</strong> -- Specifies an explicit type (a MIME type) of the intent data. Normally the type is inferred from the data itself. By setting this attribute, you disable that evaluation and force an explicit type.</li>
+	
+	    <li><strong>component</strong> -- Specifies an explicit name of a component class to use for the intent. 
+	    Normally this is determined by looking at the other information in the intent (the action, data/type, and categories) and matching that with a component that can handle it. If this attribute is set then none of the evaluation is performed, and this component is used exactly as is. By specifying this attribute, all of the other Intent attributes become optional.</li>
+	
+	    <li><strong>extras</strong> -- This is a Bundle of any additional information. This can be used to provide extended information to the component. For example,
+	     subject and body of an e-mail message.</li>
+	</ul>
+	
+	<h3>Intent Resolution</h3>
+	<ul>
+		<li><strong>Explicit Intents</strong> 
+			<ul>
+				<li>have specified a component (via setComponent(ComponentName) or setClass(Context, Class)), which provides the exact class to be run.</li>
+				<li>use for security reasons. Like when starting a service -- otherwise not sure which service will respond adn user will not know which service starts </li>
+			</ul>
+		</li>
+		<li><strong>Implicit Intents</strong> 
+			<ul>
+				<li>Does NOT specify a component</li>
+				<li>instead includes enough information for the system to determine which of the available components is best to run for that intent.</li>
+				<li>Use intent filters, an expression in an app's manifest file, to specify the type of intents that the component would like to receive</li>
+			</ul>
+		</li>
+	</ul>
+	
+	 Three pieces of information in the Implicit Intents  are used for resolution: 
+	 <ul>
+		<li>action</li>
+		<li>type</li>
+		<li>category</li>
+	 </ul> 
+	
+
+	<h2>Services</h2>
+	<ul>
+		<li>Component that performs long-running operations in the background and does not provide a user interface.</li>
+		<li>can continue to run even if user switches appliations</li>
+		<li>can do interprocess communication</li>
+		<li>NB, runs in the main thread of its hosting process—the service does not create its own thread and does not run in a separate process</li>
+		<li>Should create a new thread within the service to do heavy work</li>
+	</ul>
+	
+	<h3>Service forms</h3>
+	<ul>
+		<li><strong>Started</strong>
+			<ul>
+				<li>Starts it by calling startService()</li>
+				<li>Once started, a service can run in the background indefinitely, even if the component that started it is destroyed.</li>
+				<li>can stop with stopSelf() or stopService()</li>
+				<li>Usually performs a single operation and does not return a result to the caller. </li>
+			</ul>
+		</li>
+		
+		<li><strong>Bound</strong>
+			<ul>
+				<li>"bound" when an application component binds to it by calling bindService()</li>
+				<li>offers a client-server interface that allows components to interact with the service</li>
+				<li>client can close the connection by calling unbindService()</li>
+				<li>Usually  send requests, get results, and even do so across processes with interprocess communication </li>
+				<li>Runs only as long as another application component is bound to it.</li>
+				<li>Multiple components can bind to the service at once, but when all of them unbind, the service is destroyed.</li>
+			</ul>
+		</li>
+		<li>a service can work both ways</li>
+	</ul>
+	
+	
+	
+	<h2>BroadcastReceivers</h2>
+	<ul>
+		<li>Base class for code that will receive intents sent by sendBroadcast().</li>
+		<li>Can register dynamically or statically in manifest</li>
+		<li>Default implementation is cross process, but can be register locally with LocalBroadcastManager .</li>
+		<li>Prevent other processes from sending to global receiver with android:exported="false" in manifest declaration.</li>
+	</ul>
+	
+	<h3>Boradcast classes</h3>
+	<ul>
+		<li><strong>Normal broadcasts</strong>
+			<ul>
+				<li>Completely asynchronous.</li>
+				<li>Sent with Context.sendBroadcast.</li>
+				<li>more efficient</li>
+				<li>receivers of the broadcast are run in an undefined order, often at the same time.</li>
+			</ul>
+		</li>
+		
+		<li><strong>Ordered broadcasts</strong>
+			<ul>
+				<li>delivered to one receiver at a time</li>
+				<li>Sent with Context.sendOrderedBroadcast</li>
+				<li>Each receiver executes in turn, it can propagate a result to the next receiver, or it can completely abort the broadcast so that it won't be passed to other receivers. </li>
+				<li>android:priority attribute of the matching intent-filter control the order the receivers run</li>
+			</ul>
+		</li>
+	</ul>
+	
+	
+	<h3>Receiver Lifecycle</h3>
+	<ul>
+		<li>object is only valid for the duration of the call to onReceive(Context, Intent).</li>
+		<li>does not support asynchronous operation</li>
+		<li>may not show a dialog or bind to a service from within a BroadcastReceiver. Use the NotificationManager API for dialog and Context.startService() to send a command to the service. </li>
+	</ul>
+	
+	<h3>Process Lifecycle</h3>
+	<ul>
+		<li>Process currently executing a BroadcastReceiver is considered to be a foreground process + will be kept running by the system except under cases of extreme memory pressure</li>
+		<li>Once you return from onReceive(), the BroadcastReceiver is no longer active, and its hosting process is only as important as any other application components that are running in it.</li>
+		<li>Use a Service in conjunction with a BroadcastReceiver for longer-running operations</li>
+	</ul>
+	
+	
+
+
+</div>
+
+
+</body>
+</html>

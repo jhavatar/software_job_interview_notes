@@ -29,6 +29,8 @@ import com.jhavatar.softwareinterviewnotes.R;
 
 public class MainMenu extends FragmentActivity {
 	
+	static final String TAG = "MainMenu";
+	
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -77,43 +79,44 @@ public class MainMenu extends FragmentActivity {
 	
 	public static void launchBuyProDialog(final Activity activity)
     {
-		LayoutInflater inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
-	    View layout = inflater.inflate(R.layout.pro_alert_layout, null);
-	    
-    	TextView text = (TextView) layout.findViewById(R.id.text);
-	    text.setMovementMethod(LinkMovementMethod.getInstance());
-
-	    text.setText(Html.fromHtml("Buy the Pro version and support the developer" +
-	    		"<br>" +
-	    		"<br> Pro version features:" +
-	    		"<br> &nbsp; &bull; No ads " +
-	    		"<br> &nbsp; &bull; No app permissions " +
-	    		"<br> &nbsp; &bull; Same content! "
-    		));
-	    
-	    
-	    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-    	builder.setCancelable(true)
-    	       .setTitle("Pro version")
-    	       .setPositiveButton("Support", new DialogInterface.OnClickListener() {
-    	        	public void onClick(DialogInterface dialog, int id) {
-    	        		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.amazon.com/Software-Job-Interview-Notes-Pro/dp/B00GQITFLA/ref=sr_1_2?s=mobile-apps&ie=UTF8&qid=1384892337&sr=1-2"));
-    	        		activity.startActivity(browserIntent);
-    	        	}
-    	        })
-    	        .setNegativeButton("No thanks", new DialogInterface.OnClickListener() {
-    	        	public void onClick(DialogInterface dialog, int id) {
-    	        	}
-    	        });
-
-    	builder.setView(layout);
-    	AlertDialog alert = builder.create();
-    	
-    	alert.setIcon(R.drawable.icon_launch_pro);
-    	
-    	alert.show();
-    	
-    	
+//		LayoutInflater inflater = (LayoutInflater) activity.getSystemService(LAYOUT_INFLATER_SERVICE);
+//	    View layout = inflater.inflate(R.layout.pro_alert_layout, null);
+//	    
+//    	TextView text = (TextView) layout.findViewById(R.id.text);
+//	    text.setMovementMethod(LinkMovementMethod.getInstance());
+//
+//	    text.setText(Html.fromHtml("Buy the Pro version and support the developer" +
+//	    		"<br>" +
+//	    		"<br> Pro version features:" +
+//	    		"<br> &nbsp; &bull; No ads " +
+//	    		"<br> &nbsp; &bull; No app permissions " +
+//	    		"<br> &nbsp; &bull; Same content! "
+//    		));
+//	    
+//	    
+//	    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//    	builder.setCancelable(true)
+//    	       .setTitle("Pro version")
+//    	       .setPositiveButton("Support", new DialogInterface.OnClickListener() {
+//    	        	public void onClick(DialogInterface dialog, int id) {
+//    	        		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.amazon.com/Software-Job-Interview-Notes-Pro/dp/B00GQITFLA/ref=sr_1_2?s=mobile-apps&ie=UTF8&qid=1384892337&sr=1-2"));
+//    	        		activity.startActivity(browserIntent);
+//    	        	}
+//    	        })
+//    	        .setNegativeButton("No thanks", new DialogInterface.OnClickListener() {
+//    	        	public void onClick(DialogInterface dialog, int id) {
+//    	        	}
+//    	        });
+//
+//    	builder.setView(layout);
+//    	AlertDialog alert = builder.create();
+//    	
+//    	alert.setIcon(R.drawable.icon_launch_pro);
+//    	
+//    	alert.show();
+		
+		Intent intent = new Intent(activity, DialogActivity.class);
+		activity.startActivity(intent);
     }
 
 	@Override
@@ -297,6 +300,21 @@ public class MainMenu extends FragmentActivity {
 	public void onBuyProItemClick(MenuItem item) {
 		//Log.d("jhavatar", "onBuyProItemClick");
 		launchBuyProDialog(this);
+	}
+	
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		Log.d(TAG, "onPause");
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onPause();
+		
+		Log.d(TAG, "onStop");
 	}
 	
 	@Override

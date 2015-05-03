@@ -25,7 +25,8 @@ public class HtmlResources {
 		R.string.title_concurrency_design_patterns,
 		R.string.title_tcpip,
 		R.string.title_web_services,
-		R.string.title_nosql};
+		R.string.title_nosql,
+		R.string.title_android};
 	
 	static final String[] HTML_FILE_NAMES = {"", 
 					"ComputationalComplexityTheory.html",
@@ -45,7 +46,8 @@ public class HtmlResources {
 					"ConcurrencyDesignPatterns.html",
 					"tcpip.html",
 					"WebServices.html",
-					"NoSQL.html"};
+					"NoSQL.html",
+					"Android.html"};
 	
 	static final String[] NUMBERING = {
 	"",
@@ -66,7 +68,8 @@ public class HtmlResources {
 	"8.4",
 	"9",
 	"10",
-	"11"
+	"11",
+	"12"
 	};
 	
 	private static String htmlParams;
