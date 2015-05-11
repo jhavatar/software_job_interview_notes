@@ -198,10 +198,11 @@
 	<h2>Heap</h2>
 	<ul>
 		<li>Specialized tree-based data structure that satisfies the heap property</li>
-		<li><strong>heap property:</strong> If A is a parent node of B then key(A) is ordered with respect to key(B) with the same ordering applying across the heap</li>
+		<li><strong>heap property:</strong> If A is a parent node of B then key(A) is ordered with respect to key(B) with the same ordering applying across the heap. e.g. <math>value[parent(i)] >= value[i])</math> </li>
 		<li>Not the same as a search tree, guarantees orders for levels while search tree guarantees order for left to right nodes.</li>
 		<li>Not be confused with the heap which is a common name for the pool of memory from which dynamically allocated memory is allocated.</li>
 		<li>The heap is one maximally efficient implementation of an abstract data type called a priority queue,</li>
+		<li>Heapify -- manipulates a tree (or subtree) so it becomes a heap</li>
 	</ul>
 	
 	<h2>Binary Heap</h2>
@@ -215,7 +216,9 @@
 	</ul>
 	<h3>Efficiency</h3>
 	<ul>
-		<li>Search: <math>(logn)</math></li>
+		<li>Build heap: &#927<math>(n)</math></li>
+		<li>Heapify: &#927<math>(logn)</math></li>
+		<li>Search: &#927;<math>(logn)</math></li>
 		<li>Insert: &#927;<math>(logn)</math></li>
 		<li>Delete:  &#927;<math>(logn)</math></li>
 		<li>Space (average):&#920;<math>(n)</math></li>

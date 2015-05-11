@@ -178,6 +178,16 @@
 		<li>a service can work both ways</li>
 	</ul>
 	
+	<h3>Intent Service</h3>
+	<ul>
+		<li>Subclass of Intent</li>
+		<li>Clients send requests through startService(Intent)</li>
+		<li>service is started as needed, </li>
+		<li>All requests are queued + handled on a single worker thread. Not the main/UI thread.</li>
+		<li>Only one request is processed at a time</li>
+	</ul>
+	
+	
 	
 	
 	<h2>BroadcastReceivers</h2>
@@ -188,7 +198,7 @@
 		<li>Prevent other processes from sending to global receiver with android:exported="false" in manifest declaration.</li>
 	</ul>
 	
-	<h3>Boradcast classes</h3>
+	<h3>Broadcast classes</h3>
 	<ul>
 		<li><strong>Normal broadcasts</strong>
 			<ul>
