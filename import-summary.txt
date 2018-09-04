@@ -1,0 +1,133 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* ant.properties.free_amazon
+* ant.properties.free_play
+* ant.properties.paid
+* antlibs\
+* antlibs\ant-contrib-1.0b3.jar
+* assets.zip
+* build.xml
+* buildconfig.xml
+* builds\
+* builds\AndroidManifest.free_amazon.xml
+* builds\AndroidManifest.free_play.xml
+* builds\AndroidManifest.paid.xml
+* builds\buildvals.free_amazon.xml
+* builds\buildvals.free_play.xml
+* builds\buildvals.paid.xml
+* ic_launcher-web.png
+* libs_ads\
+* libs_ads\GoogleAdMobAdsSdk-6.4.1.jar
+* libs_ads\amazon-ads-5.1.153.jar
+* market_resources\
+* market_resources\SoftwareJobInterviewNotes.apk
+* market_resources\SoftwareJobInterviewNotesFreeAmazon.apk
+* market_resources\SoftwareJobInterviewNotesPro.apk
+* market_resources\icon\
+* market_resources\icon\action_bar.svg
+* market_resources\icon\find.png
+* market_resources\icon\find_cancel.png
+* market_resources\icon\find_cancel_hd.png
+* market_resources\icon\find_cancel_xhd.png
+* market_resources\icon\find_cancel_xxhd.png
+* market_resources\icon\find_hd.png
+* market_resources\icon\find_next.png
+* market_resources\icon\find_next_hd.png
+* market_resources\icon\find_next_xhd.png
+* market_resources\icon\find_next_xxhd.png
+* market_resources\icon\find_prev.png
+* market_resources\icon\find_prev_hd.png
+* market_resources\icon\find_prev_xhd.png
+* market_resources\icon\find_prev_xxhd.png
+* market_resources\icon\find_xhd.png
+* market_resources\icon\find_xxhd.png
+* market_resources\icon\icon.svg
+* market_resources\icon\icon_36.png
+* market_resources\icon\icon_48.png
+* market_resources\icon\icon_launcher_48.png
+* market_resources\icon\launcher10_114.png
+* market_resources\icon\launcher10_144.png
+* market_resources\icon\launcher10_36.png
+* market_resources\icon\launcher10_48.png
+* market_resources\icon\launcher10_512.png
+* market_resources\icon\launcher10_72.png
+* market_resources\icon\launcher10_96.png
+* market_resources\icon\launcher3_72.png
+* market_resources\icon\launcher4_72.png
+* market_resources\icon\launcher5_72.png
+* market_resources\icon\launcher6_72.png
+* market_resources\icon\launcher6_96.png
+* market_resources\icon\launcher7_96.png
+* market_resources\icon\launcher8_114.png
+* market_resources\icon\launcher8_96.png
+* market_resources\icon\launcher9_512.png
+* market_resources\icon\launcher9_96.png
+* market_resources\icon\launcherPro_114.png
+* market_resources\icon\launcherPro_144.png
+* market_resources\icon\launcherPro_36.png
+* market_resources\icon\launcherPro_48.png
+* market_resources\icon\launcherPro_512.png
+* market_resources\icon\launcherPro_72.png
+* market_resources\icon\launcherPro_96.png
+* market_resources\icon\tie2_launcher_48.png
+* market_resources\icon\tie2_launcher_72.png
+* market_resources\icon\tie_launcher_48.png
+* market_resources\keystore\
+* market_resources\keystore\keystore
+* market_resources\screenshots\
+* market_resources\screenshots\device-2013-11-10-220013.png
+* market_resources\screenshots\device-2013-11-10-220242.png
+* market_resources\screenshots\device-2013-11-10-220421.png
+* market_resources\screenshots\device-2013-11-10-220523.png
+* market_resources\screenshots\device-2013-11-10-220551.png
+* market_resources\screenshots\pro_device-2013-11-17-234343.png
+* market_resources\screenshots\pro_device-2013-11-17-234430.png
+* market_resources\screenshots\pro_device-2013-11-17-234523.png
+* market_resources\screenshots\pro_device-2013-11-17-234602.png
+* market_resources\screenshots\pro_device-2013-11-17-234639.png
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => app\src\main\AndroidManifest.xml
+* assets\ => app\src\main\assets\
+* libs\webviewissue17535fix.jar => app\libs\webviewissue17535fix.jar
+* res\ => app\src\main\res\
+* src\ => app\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
